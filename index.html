@@ -233,9 +233,19 @@
         <h3 class="focus-card-title" id="insufficiencies-chart-title">Cantidad de Insuficiencias por Asignatura - Grupo</h3>
         <span class="focus-card-badge" id="insufficiencies-chart-subtitle">Asignaturas en Foco</span>
       </div>
+
+      <!-- Canvas único dual: barras horizontales en pantalla, dona en PDF -->
       <div class="chart-horizontal-wrapper">
         <canvas id="subjectBarChart"></canvas>
       </div>
+
+      <!-- Leyenda HTML generada dinámicamente solo en modo impresión -->
+      <div id="print-custom-legend"></div>
+
+      <!-- Nota aclaratoria: oculta en pantalla, visible en PDF -->
+      <p class="zero-insufficiencies-note">
+        <strong>Nota:</strong> Las asignaturas que no figuran en esta gráfica no presentan estudiantes con insuficiencias para este grupo.
+      </p>
     </section>
 
     <!-- SECCIÓN COMPARATIVA (ATAJOS DEL GRADO) -->

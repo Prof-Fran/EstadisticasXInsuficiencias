@@ -927,6 +927,16 @@ footer a:hover {
   min-height: 350px;
 }
 
+/* Nota oculta en pantalla — visible solo en el PDF */
+.zero-insufficiencies-note {
+  display: none;
+}
+
+/* Leyenda de impresión oculta en pantalla */
+#print-custom-legend {
+  display: none;
+}
+
 /* ==========================================================================
    ESTILOS EXCLUSIVOS PARA IMPRESIÓN / ENTRAR EN UNA SOLA HOJA A4 SIN SOLAPAMIENTO
    ========================================================================== */
@@ -1269,8 +1279,57 @@ footer a:hover {
     margin-top: 0 !important; /* Elimina margen superior en impresión para alinearse arriba */
   }
 
+  /* Canvas dual (dona en PDF): tamaño fijo y centrado */
   .chart-horizontal-wrapper {
-    height: 340px !important;
-    width: 100% !important;
+    width: 280px !important;
+    height: 280px !important;
+    margin: 30px auto 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
   }
+
+  /* Leyenda HTML en 2 columnas */
+  #print-custom-legend {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin: 0 auto !important;
+    width: 88% !important;
+    padding: 16px !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    border-radius: 12px !important;
+    background: #fdfdfd !important;
+  }
+
+  /* Cada ítem de la leyenda */
+  .print-legend-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 7px 12px !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+    border-radius: 8px !important;
+    background: #ffffff !important;
+    font-size: 9.5pt !important;
+    color: #111827 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+  }
+
+  /* Nota aclaratoria de asignaturas sin insuficiencias */
+  .zero-insufficiencies-note {
+    display: block !important;
+    margin: 16px auto !important;
+    width: 88% !important;
+    text-align: center !important;
+    background: #f9fafb !important;
+    padding: 10px 15px !important;
+    border: 1px dashed #d1d5db !important;
+    border-radius: 10px !important;
+    font-size: 9pt !important;
+    color: #4b5563 !important;
+    line-height: 1.5 !important;
+  }
+
 }

@@ -874,6 +874,20 @@
       color: var(--color-success);
     }
 
+    /* UTILERÍAS DE VISIBILIDAD */
+    .print-only {
+      display: none !important;
+    }
+
+    /* Clase inyectada por JS en beforeprint para hacer el canvas visible ANTES de renderizar */
+    body.is-printing .print-only {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      width: 100% !important;
+      gap: 1.5rem !important;
+    }
+
     /* ANIMACIONES DE CAMBIO */
     .fade-switch {
       animation: tabFadeIn 0.35s ease-out forwards;
@@ -1286,9 +1300,88 @@
         margin-top: 0 !important; /* Elimina margen superior en impresión para alinearse arriba */
       }
 
-      .chart-horizontal-wrapper {
-        height: 340px !important;
+      .screen-only {
+        display: none !important;
+      }
+      
+      .print-only {
+        display: block !important;
+      }
+
+      /* Contenedor del gráfico circular en PDF */
+      .print-donut-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
         width: 100% !important;
+        gap: 1.5rem !important;
+        margin-top: 1rem !important;
+      }
+
+      .print-chart-wrapper {
+        width: 260px !important;
+        height: 260px !important;
+        position: relative !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* Grilla de Referencias en 2 columnas */
+      .print-legend-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0.5rem auto !important;
+      }
+
+      /* Tarjeta individual de leyenda */
+      .print-legend-item {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        background: #ffffff !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 10px !important;
+        padding: 0.6rem 1.25rem !important;
+        font-size: 10pt !important;
+        color: #111827 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+      }
+
+      .print-legend-label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        font-weight: 500 !important;
+      }
+
+      .print-legend-bullet {
+        font-size: 14px !important;
+        line-height: 1 !important;
+      }
+
+      .print-legend-value {
+        font-weight: 700 !important;
+        font-family: var(--font-title);
+      }
+
+      /* Nota explicativa de asignaturas ausentes */
+      .print-note {
+        font-size: 8.5pt !important;
+        color: #4b5563 !important;
+        text-align: center !important;
+        background: #f9fafb !important;
+        border: 1px dashed #d1d5db !important;
+        border-radius: 12px !important;
+        padding: 0.85rem !important;
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0.5rem auto !important;
+        line-height: 1.5 !important;
       }
     }
   </style>
@@ -1509,8 +1602,25 @@
         <h3 class="focus-card-title" id="insufficiencies-chart-title">Cantidad de Insuficiencias por Asignatura - Grupo</h3>
         <span class="focus-card-badge" id="insufficiencies-chart-subtitle">Asignaturas en Foco</span>
       </div>
-      <div class="chart-horizontal-wrapper">
+      
+      <!-- Gráfico de barras - SOLO pantalla -->
+      <div class="chart-horizontal-wrapper screen-only">
         <canvas id="subjectBarChart"></canvas>
+      </div>
+
+      <!-- Nueva estructura de dona y referencias - SOLO impresión/PDF -->
+      <div class="print-only print-donut-container">
+        <div class="print-chart-wrapper">
+          <canvas id="subjectDonutChartPrint"></canvas>
+        </div>
+        
+        <!-- Contenedor dinámico de la leyenda por código de color -->
+        <div id="print-legend-container" class="print-legend-grid"></div>
+        
+        <!-- Nota importante al pie -->
+        <div class="print-note">
+          <strong>Nota importante:</strong> Las asignaturas que no figuran detalladas en esta gráfica indican que no presentan estudiantes con insuficiencias para este grupo en particular.
+        </div>
       </div>
     </section>
 
@@ -2488,6 +2598,133 @@
       });
     }
 
+    // 3.7. Función para destruir y generar el gráfico de dona circular de insuficiencias para impresión (PDF)
+    let activePrintDonutChart = null;
+
+    const subjectAbbreviations = {
+      "Biologia": "Biología",
+      "Com Visual": "Com. Vis.",
+      "Com. Visual": "Com. Vis.",
+      "Ed Fisica": "Ed. Física",
+      "Ed Musical": "Ed. Mus.",
+      "Geografia": "Geografía",
+      "Historia": "Historia",
+      "Id Esp": "Id. Esp.",
+      "Ingles": "Inglés",
+      "Matematicas": "Matemáticas",
+      "Matemáticas": "Matemáticas",
+      "Matemática": "Matemáticas",
+      "Informática": "Informática",
+      "Informatica": "Informática",
+      "Cs. Fis/Quim": "Cs. Fis/Quim",
+      "Cs. Fis/Quim.": "Cs. Fis/Quim",
+      "Ciudadana": "Ciudadana",
+      "Fisica": "Física",
+      "Id Español": "Id. Esp.",
+      "Literatura": "Literatura",
+      "Quimica": "Química",
+      "Atronomia": "Astronomía",
+      "Deporte y Rec": "Dep. Rec.",
+      "Part Juvenil": "Part. Juv.",
+      "Filosofia": "Filosofía",
+      "Arg y debate": "Arg. Deb.",
+      "Patrimonio": "Patrimonio"
+    };
+
+    const donutPalette = [
+      '#ff007f', // Rosa Neón
+      '#7f00ff', // Violeta
+      '#4f46e5', // Índigo
+      '#3b82f6', // Azul
+      '#0ea5e9', // Celeste
+      '#00f2fe', // Cian
+      '#b5179e', // Magenta
+      '#7209b7', // Púrpura
+      '#3f37c9', // Azul eléctrico
+      '#4895ef'  // Azul claro
+    ];
+
+    function generatePrintDonutChart(insuficiencias) {
+      const canvas = document.getElementById('subjectDonutChartPrint');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      if (activePrintDonutChart) {
+        activePrintDonutChart.destroy();
+      }
+
+      // Filtrar asignaturas con al menos 1 insuficiencia
+      const subjects = Object.keys(insuficiencias).filter(key => insuficiencias[key] > 0);
+      const values = subjects.map(key => insuficiencias[key]);
+
+      const legendContainer = document.getElementById('print-legend-container');
+      if (subjects.length === 0) {
+        if (legendContainer) legendContainer.innerHTML = '';
+        return;
+      }
+
+      const colors = subjects.map((_, index) => donutPalette[index % donutPalette.length]);
+
+      activePrintDonutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: subjects,
+          datasets: [{
+            data: values,
+            backgroundColor: colors,
+            borderColor: '#ffffff',
+            borderWidth: 2,
+            cutout: '50%'
+          }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            datalabels: {
+              color: '#ffffff',
+              font: { family: 'Outfit', weight: 'bold', size: 10 },
+              formatter: (value, context) => {
+                const label = context.chart.data.labels[context.dataIndex];
+                const abbr = subjectAbbreviations[label] || label;
+                return `${abbr}\n${value}`;
+              },
+              textAlign: 'center'
+            }
+          }
+        }
+      });
+
+      // Renderizar la leyenda personalizada debajo
+      renderPrintLegend(subjects, values, colors);
+    }
+
+    function renderPrintLegend(subjects, values, colors) {
+      const container = document.getElementById('print-legend-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      subjects.forEach((subject, index) => {
+        const val = values[index];
+        const color = colors[index];
+
+        const item = document.createElement('div');
+        item.className = 'print-legend-item';
+        item.innerHTML = `
+          <div class="print-legend-label">
+            <span class="print-legend-bullet" style="color: ${color}">●</span>
+            <span>${subjectAbbreviations[subject] || subject}</span>
+          </div>
+          <span class="print-legend-value" style="color: ${color}">${val}</span>
+        `;
+
+        container.appendChild(item);
+      });
+    }
+
+
     /* INTERACTIVIDAD CRUZADA DE LA LISTA DE METRICAS (BOTONES DE FILTRO) */
     function setupMetricInteractivity() {
       metricItems.forEach(item => {
@@ -2557,6 +2794,7 @@
       // Actualizar título de la sección de insuficiencias y generar el gráfico de barras
       document.getElementById('insufficiencies-chart-title').textContent = `Cantidad de Insuficiencias por Asignatura - Grupo ${groupName}`;
       generateBarChart(group.insuficiencias || {});
+      generatePrintDonutChart(group.insuficiencias || {});
 
       // Sincronizar el dropdown
       groupSelector.value = groupName;
@@ -2765,18 +3003,26 @@
 
     // 9.5. Sincronización de estilos de gráficos para Impresión (Alto contraste en fondo blanco)
     window.addEventListener('beforeprint', () => {
-      // Ajustar gráfico de rosca (donut)
+      // Añadir clase al body para que el CSS muestre el contenedor de dona
+      // (el inline style no puede superar !important del CSS)
+      document.body.classList.add('is-printing');
+
+      // Re-renderizar la dona con el grupo activo actual (ahora el canvas tiene dimensiones reales)
+      const gradeData = meetingsData[currentMeetingKey].data[currentGradeKey];
+      const group = gradeData.groups.find(g => g.name === activeGroupName);
+      if (group) {
+        generatePrintDonutChart(group.insuficiencias || {});
+      }
+
+      // Alto contraste para los gráficos de pantalla
       if (activeDonutChart) {
         activeDonutChart.data.datasets[0].borderColor = '#ffffff';
         activeDonutChart.update('none');
       }
-      // Ajustar gráfico de barras
       if (activeBarChart) {
         activeBarChart.options.scales.y.ticks.color = '#111827';
         activeBarChart.options.scales.x.ticks.color = '#4b5563';
         activeBarChart.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
-        
-        // Modificar color de las etiquetas del gráfico de barras para impresión
         if (activeBarChart.options.plugins.datalabels) {
           activeBarChart.options.plugins.datalabels.color = '#111827';
         }
@@ -2785,17 +3031,18 @@
     });
 
     window.addEventListener('afterprint', () => {
-      // Restaurar gráfico de rosca
+      // Remover clase del body para ocultar nuevamente el contenedor de dona
+      document.body.classList.remove('is-printing');
+
+      // Restaurar colores del dashboard oscuro
       if (activeDonutChart) {
         activeDonutChart.data.datasets[0].borderColor = '#0b0b10';
         activeDonutChart.update('none');
       }
-      // Restaurar gráfico de barras
       if (activeBarChart) {
         activeBarChart.options.scales.y.ticks.color = '#ffffff';
         activeBarChart.options.scales.x.ticks.color = '#9ca3af';
         activeBarChart.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.05)';
-        
         if (activeBarChart.options.plugins.datalabels) {
           activeBarChart.options.plugins.datalabels.color = '#ffffff';
         }

@@ -318,37 +318,35 @@ exportPdfBtn.addEventListener('click', function() {
 });
 
 // =============================================================================
-// 8. Ajustes de Gráficos para Impresión (Alto Contraste en Fondo Blanco)
+// 8. Transformación Barras ↔ Dona para Exportación PDF
 // =============================================================================
 window.addEventListener('beforeprint', function() {
+  // Alto contraste del donut de alumnos para fondo blanco
   if (activeDonutChart) {
     activeDonutChart.data.datasets[0].borderColor = '#ffffff';
     activeDonutChart.update('none');
   }
-  if (activeBarChart) {
-    activeBarChart.options.scales.y.ticks.color        = '#111827';
-    activeBarChart.options.scales.x.ticks.color        = '#4b5563';
-    activeBarChart.options.scales.x.grid.color         = 'rgba(0, 0, 0, 0.1)';
-    if (activeBarChart.options.plugins.datalabels) {
-      activeBarChart.options.plugins.datalabels.color  = '#111827';
-    }
-    activeBarChart.update('none');
+
+  // Transformar el gráfico de barras en dona usando los datos del grupo activo
+  var gradeData = meetingsData[currentMeetingKey].data[currentGradeKey];
+  var group = gradeData.groups.find(function(g) { return g.name === activeGroupName; });
+  if (group) {
+    generateBarChart(group.insuficiencias || {}, true);
   }
 });
 
 window.addEventListener('afterprint', function() {
+  // Restaurar bordes del donut de alumnos al fondo oscuro
   if (activeDonutChart) {
     activeDonutChart.data.datasets[0].borderColor = '#0b0b10';
     activeDonutChart.update('none');
   }
-  if (activeBarChart) {
-    activeBarChart.options.scales.y.ticks.color        = '#ffffff';
-    activeBarChart.options.scales.x.ticks.color        = '#9ca3af';
-    activeBarChart.options.scales.x.grid.color         = 'rgba(255, 255, 255, 0.05)';
-    if (activeBarChart.options.plugins.datalabels) {
-      activeBarChart.options.plugins.datalabels.color  = '#ffffff';
-    }
-    activeBarChart.update('none');
+
+  // Restaurar las barras horizontales en pantalla
+  var gradeData = meetingsData[currentMeetingKey].data[currentGradeKey];
+  var group = gradeData.groups.find(function(g) { return g.name === activeGroupName; });
+  if (group) {
+    generateBarChart(group.insuficiencias || {}, false);
   }
 });
 
