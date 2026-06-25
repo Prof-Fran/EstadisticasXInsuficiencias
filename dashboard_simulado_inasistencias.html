@@ -1,0 +1,2813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de Primera Reunión - Abril 2026</title>
+  
+  <!-- Google Fonts para Tipografía Moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CDN de Chart.js y Plugin de Etiquetas para mostrar porcentajes -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+  <style>
+    /* VARIABLES DE DISEÑO (ESTILO DARK MODE / CRYPTO / NFT) */
+    :root {
+      --bg-dark: #07070a;
+      --bg-card: rgba(18, 18, 26, 0.65);
+      --border-glow: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(99, 102, 241, 0.35);
+      
+      /* Degradados */
+      --grad-active: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7f00ff 100%);
+      --grad-text: linear-gradient(135deg, #ffffff 40%, #a5b4fc 80%, #818cf8 100%);
+      
+      /* Colores de Categorías */
+      --color-success: #00f2fe;
+      --color-warning: #f59e0b;
+      --color-danger: #ff007f;
+      --color-neon-pink: #ff007f;
+      
+      --font-main: 'Inter', sans-serif;
+      --font-title: 'Outfit', sans-serif;
+    }
+
+    /* RESET & ESTILOS BASE */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #f3f4f6;
+      font-family: var(--font-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* NEON GLOW DECORATIVOS EN EL FONDO */
+    .bg-glow {
+      position: fixed;
+      width: 45vw;
+      height: 45vw;
+      border-radius: 50%;
+      filter: blur(160px);
+      z-index: -1;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .bg-glow-purple {
+      background: radial-gradient(circle, rgba(127, 0, 255, 0.6) 0%, transparent 70%);
+      top: -15%;
+      right: -10%;
+    }
+
+    .bg-glow-cyan {
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.5) 0%, transparent 70%);
+      bottom: -15%;
+      left: -10%;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .container {
+      width: 100%;
+      max-width: 1350px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ENCABEZADO */
+    .header {
+      text-align: center;
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: #a5b4fc;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+    }
+
+    .header-badge::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-success);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--color-success);
+    }
+
+    .header h1 {
+      font-family: var(--font-title);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .header p {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: #9ca3af;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* PANELES DE NAVEGACIÓN (TABS DE NIVEL) */
+    .tabs-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .tabs-container {
+      display: flex;
+      background: rgba(18, 18, 26, 0.8);
+      border: 1px solid var(--border-glow);
+      padding: 0.45rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      gap: 0.25rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      padding: 0.85rem 1.85rem;
+      border-radius: 9999px;
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+    }
+
+    .tab-btn.active {
+      background: var(--grad-active);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.25),
+                  0 4px 25px rgba(127, 0, 255, 0.2);
+    }
+
+    /* SECCIÓN DE RESUMEN (BENTO STATS DEL GRADO) - EXPANDIDO A 4 COLUMNAS */
+    .summary-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .summary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 1.25rem 1.5rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .summary-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stat-icon.neon-blue {
+      background: rgba(0, 242, 254, 0.08);
+      color: var(--color-success);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+    }
+
+    .stat-icon.neon-purple {
+      background: rgba(127, 0, 255, 0.08);
+      color: #a78bfa;
+      border: 1px solid rgba(127, 0, 255, 0.2);
+    }
+
+    .stat-icon.neon-pink {
+      background: rgba(255, 0, 127, 0.08);
+      color: var(--color-danger);
+      border: 1px solid rgba(255, 0, 127, 0.2);
+    }
+
+    .stat-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .stat-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-val {
+      font-family: var(--font-title);
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .val-neon-pink {
+      color: var(--color-neon-pink);
+      text-shadow: 0 0 10px rgba(255, 0, 127, 0.15);
+    }
+
+    /* DISEÑO DE DOS COLUMNAS PRINCIPAL */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    @media (max-width: 992px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PANEL IZQUIERDO (CONTROLES E HALLAZGOS) */
+    .sidebar-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* TARJETA SELECTOR DE GRUPO */
+    .selector-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .selector-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .selector-title svg {
+      width: 20px;
+      height: 20px;
+      color: #00f2fe;
+    }
+
+    .custom-select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .custom-select {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      color: #ffffff;
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: all 0.3s ease;
+    }
+
+    .custom-select:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(99, 102, 241, 0.45);
+    }
+
+    .custom-select:focus {
+      outline: none;
+      border-color: #00f2fe;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+      background: #0d0d14;
+    }
+
+    /* Flecha estilizada para select */
+    .custom-select-wrapper::after {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23a5b4fc' %3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E");
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-40%);
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .custom-select-wrapper:hover::after {
+      opacity: 1;
+    }
+
+    /* BOTÓN EXPORTAR PDF */
+    .export-btn {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      background: var(--grad-active);
+      border: none;
+      border-radius: 16px;
+      color: #ffffff;
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+      margin-top: 0.25rem;
+    }
+
+    .export-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.3),
+                  0 0 15px rgba(127, 0, 255, 0.2);
+    }
+
+    .export-btn:active {
+      transform: translateY(0);
+    }
+
+    .export-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .selector-helper {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      line-height: 1.4;
+    }
+
+    /* ESTILOS SELECTOR DE REUNIONES */
+    .meeting-selector-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .meeting-selector-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #a5b4fc;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .meeting-select-width {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    /* DIAGNÓSTICO DE NIVEL VACÍO EDITABLE */
+    .insights-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      border-left: 4px solid var(--color-success);
+    }
+
+    .insights-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .insights-header svg {
+      width: 22px;
+      height: 22px;
+      color: var(--color-success);
+      fill: none;
+    }
+
+    .insights-header h3 {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Editor de Diagnóstico Estilizado */
+    .insights-editable {
+      min-height: 120px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+      color: #e2e8f0;
+      font-family: var(--font-main);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      outline: none;
+      resize: none;
+      transition: all 0.3s ease;
+      cursor: text;
+    }
+
+    .insights-editable:focus {
+      border-color: rgba(99, 102, 241, 0.5);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.1);
+    }
+
+    /* Placeholder para Contenteditable */
+    .insights-editable:empty::before {
+      content: attr(placeholder);
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* PANEL DERECHO: TARJETA DE ANÁLISIS DE GRUPO EN ENFOQUE */
+    .analytics-focus-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .analytics-focus-card::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .focus-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 1rem;
+    }
+
+    .focus-card-title {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 90%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .focus-card-badge {
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      color: var(--color-success);
+      padding: 0.35rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
+    }
+
+    /* CONTENEDOR DEL GRÁFICO Y LISTADO */
+    .analytics-content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.9fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .analytics-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* Wrapper del Canvas */
+    .chart-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Centro del Donut estilizado */
+    .chart-center-label {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .chart-center-number {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .chart-center-text {
+      font-size: 0.65rem;
+      color: #9ca3af;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+
+    /* Listado de Métricas en Detalle */
+    .focus-metrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .focus-metric-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 1.25rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .focus-metric-item:hover, .focus-metric-item.selected-active {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateX(4px);
+    }
+
+    .focus-metric-item.selected-active {
+      box-shadow: inset 0 0 8px rgba(0, 242, 254, 0.1);
+    }
+
+    .focus-metric-label-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .focus-metric-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .indicator-success {
+      background-color: var(--color-success);
+      box-shadow: 0 0 10px var(--color-success);
+    }
+
+    .indicator-warning {
+      background-color: var(--color-warning);
+      box-shadow: 0 0 10px var(--color-warning);
+    }
+
+    .indicator-danger {
+      background-color: var(--color-danger);
+      box-shadow: 0 0 10px var(--color-danger);
+    }
+
+    .focus-metric-text {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .focus-metric-val {
+      font-family: var(--font-title);
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    .val-success { color: var(--color-success); text-shadow: 0 0 10px rgba(0, 242, 254, 0.15); }
+    .val-warning { color: var(--color-warning); text-shadow: 0 0 10px rgba(245, 158, 11, 0.15); }
+    .val-danger { color: var(--color-danger); text-shadow: 0 0 10px rgba(255, 0, 127, 0.15); }
+
+    /* NUEVO CONTENEDOR SECUNDARIO: DESGLOSE DE AUSENTISMO DINÁMICO */
+    .absences-breakdown-box {
+      margin-top: 0.75rem;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 18px;
+      padding: 1.25rem;
+    }
+
+    .absences-breakdown-box h4 {
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    .absences-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .absence-level-card {
+      background: rgba(18, 18, 26, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 0.85rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
+    .absence-level-card.critico-border {
+      border-bottom: 2.5px solid var(--color-neon-pink);
+    }
+
+    .absence-level-label {
+      font-size: 0.72rem;
+      color: #9ca3af;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .absence-level-val {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* SECCIÓN COMPARATIVA INFERIOR */
+    .comparative-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .comparative-section-title {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .comparative-section-title svg {
+      width: 22px;
+      height: 22px;
+      color: #818cf8;
+      fill: none;
+    }
+
+    .comparative-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .comparative-card {
+      background: rgba(18, 18, 26, 0.4);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 1.1rem 1.25rem;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      position: relative;
+    }
+
+    .comparative-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.08);
+    }
+
+    .comparative-card.active {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: #00f2fe;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+    }
+
+    .comparative-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comparative-card-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .comparative-card-badge {
+      font-size: 0.65rem;
+      color: #9ca3af;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    /* Mini Barra de Proporciones Visuales */
+    .comparative-mini-bar {
+      display: flex;
+      height: 6px;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      width: 100%;
+      margin-top: 0.2rem;
+    }
+
+    .mini-bar-segment {
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+
+    .mini-bar-success { background-color: var(--color-success); }
+    .mini-bar-warning { background-color: var(--color-warning); }
+    .mini-bar-danger { background-color: var(--color-danger); }
+
+    /* CONTENEDOR EXCLUSIVO PARA IMPRESIÓN (REPORT HEADER) */
+    .print-header-only {
+      display: none;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    footer a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--color-success);
+    }
+
+    /* ANIMACIONES DE CAMBIO */
+    .fade-switch {
+      animation: tabFadeIn 0.35s ease-out forwards;
+    }
+
+    @keyframes tabFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      
+      .tabs-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 20px;
+        padding: 0.35rem;
+      }
+
+      .tab-btn {
+        padding: 0.65rem 1.15rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* SECCIÓN DE INSUFICIENCIAS POR ASIGNATURA */
+    .subject-insufficiencies-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 24px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .subject-insufficiencies-card::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 0, 127, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .chart-horizontal-wrapper {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      min-height: 350px;
+    }
+
+    /* ==========================================================================
+       ESTILOS EXCLUSIVOS PARA IMPRESIÓN / ENTRAR EN UNA SOLA HOJA A4 SIN SOLAPAMIENTO
+       ========================================================================== */
+    @media print {
+      /* Estructurar página A4 Vertical rígida */
+      @page {
+        size: A4 portrait;
+        margin: 15mm 15mm 15mm 15mm !important; /* Margen moderado y limpio de 15mm */
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 9.5pt !important; 
+        min-height: auto !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        overflow: visible !important;
+      }
+
+      /* Ocultar elementos decorativos e interactivos no aptos para el PDF */
+      .bg-glow,
+      .tabs-wrapper,
+      .selector-card,
+      .comparative-section,
+      .meeting-selector-container,
+      footer {
+        display: none !important;
+      }
+
+      /* Cabecera del Reporte impresa */
+      .print-header-only {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 1rem !important; 
+        border-bottom: 2px solid #111827 !important;
+        padding-bottom: 0.5rem !important;
+      }
+
+      .print-header-only h2 {
+        font-family: var(--font-title);
+        font-size: 18pt !important;
+        font-weight: 800;
+        color: #111827;
+        margin: 0 !important;
+      }
+
+      .print-header-only p {
+        font-size: 9.5pt !important;
+        color: #4b5563;
+        margin-top: 3px !important;
+      }
+
+      /* Ocultar cabecera original en pantalla */
+      .header {
+        display: none !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        gap: 1rem !important; 
+      }
+
+      /* Resumen Global Bento en PDF (Asegurar que sea visible con alto contraste) - 4 Columnas */
+      .summary-section {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important; /* 4 columnas horizontales firmes */
+        gap: 0.5rem !important;
+        width: 100% !important;
+      }
+
+      .summary-card {
+        padding: 0.5rem 0.75rem !important;
+        border-radius: 12px !important;
+        background: #f9fafb !important;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: none !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+      }
+
+      /* Colores oscuros de texto y números legibles en papel para las tarjetas de resumen */
+      .summary-card .stat-val {
+        color: #111827 !important;
+        font-size: 1.25rem !important;
+      }
+
+      .summary-card .stat-label {
+        color: #4b5563 !important;
+        font-size: 0.65rem !important;
+      }
+
+      .stat-icon {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 8px !important;
+      }
+
+      .stat-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      /* Colores e iconos de alto contraste para impresión */
+      .summary-card .stat-icon.neon-blue {
+        background: #e0f2fe !important;
+        border: 1px solid #bae6fd !important;
+        color: #0369a1 !important;
+      }
+
+      .summary-card .stat-icon.neon-purple {
+        background: #f3e8ff !important;
+        border: 1px solid #e9d5ff !important;
+        color: #6d28d9 !important;
+      }
+
+      .summary-card .stat-icon.neon-pink {
+        background: #fce7f3 !important;
+        border: 1px solid #fbcfe8 !important;
+        color: #be185d !important;
+      }
+
+      /* Layout de Análisis - Distribución en Dos Columnas en Paralelo */
+      .main-layout {
+        display: grid !important;
+        grid-template-columns: 1.1fr 1fr !important; /* Columna 1: Diagnóstico (más ancha) | Columna 2: Gráfico y Métricas */
+        gap: 1.25rem !important;
+        width: 100% !important;
+        align-items: start !important;
+      }
+
+      .sidebar-panel {
+        width: 100% !important;
+      }
+
+      /* Tarjeta de Diagnóstico Escrito por el Usuario */
+      .insights-card {
+        background: #f9fafb !important;
+        border: 1px solid #d1d5db !important;
+        border-left: 4px solid #0284c7 !important;
+        box-shadow: none !important;
+        border-radius: 16px !important;
+        padding: 1.25rem !important;
+        height: auto !important; 
+        min-height: 360px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid;
+      }
+
+      .insights-header {
+        gap: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      .insights-header h3 {
+        color: #111827 !important;
+        font-size: 11pt !important;
+      }
+
+      /* Textarea / Editable de diagnóstico en papel */
+      .insights-editable {
+        background: #ffffff !important;
+        border: 1px solid #e5e7eb !important;
+        color: #1f2937 !important;
+        font-size: 10pt !important;
+        padding: 0.85rem !important;
+        border-radius: 8px !important;
+        min-height: 250px !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        white-space: pre-wrap !important;
+        line-height: 1.6 !important;
+      }
+
+      /* Tarjeta de Enfoque con Gráfico en Impresión */
+      .analytics-focus-card {
+        background: #ffffff !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 16px !important;
+        box-shadow: none !important;
+        color: #111827 !important;
+        padding: 1.25rem !important;
+        page-break-inside: avoid;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+      }
+
+      .focus-card-header {
+        border-bottom: 1.5px solid #e5e7eb !important;
+        padding-bottom: 0.5rem !important;
+        margin-bottom: 0.25rem !important;
+      }
+
+      .focus-card-title {
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: #111827 !important;
+        font-size: 12pt !important;
+        font-weight: 700 !important;
+      }
+
+      .focus-card-badge {
+        background: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        color: #1f2937 !important;
+        box-shadow: none !important;
+        font-weight: 600 !important;
+        font-size: 0.65rem !important;
+        padding: 0.2rem 0.6rem !important;
+      }
+
+      /* En el PDF, para evitar solapamientos horizontales, forzamos que el gráfico y las métricas */
+      /* se apilen VERTICALMENTE dentro de su propia tarjeta. Así hay espacio libre sin chocar. */
+      .analytics-content-grid {
+        display: flex !important; 
+        flex-direction: column !important; 
+        gap: 1.25rem !important;
+        align-items: center !important;
+        width: 100% !important;
+      }
+
+      /* Sizing Fijo y Estable en Donut para que no solape */
+      .chart-wrapper {
+        width: 160px !important;
+        height: 160px !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+      }
+
+      .chart-center-number {
+        color: #111827 !important;
+        font-size: 1.5rem !important;
+      }
+
+      .chart-center-text {
+        font-size: 0.55rem !important;
+      }
+
+      /* Lista de Métricas Compactas */
+      .focus-metrics-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.4rem !important;
+        width: 100% !important;
+      }
+
+      .focus-metric-item {
+        background: #f9fafb !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 8px !important;
+        padding: 0.45rem 0.75rem !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+
+      .focus-metric-text {
+        color: #374151 !important;
+        font-size: 8.5pt !important;
+      }
+
+      .focus-metric-val {
+        font-size: 1.05rem !important;
+        font-weight: bold !important;
+      }
+
+      .val-success { color: #0369a1 !important; text-shadow: none !important; }
+      .val-warning { color: #b45309 !important; text-shadow: none !important; }
+      .val-danger { color: #be185d !important; text-shadow: none !important; }
+
+      .indicator-success { background-color: #0284c7 !important; box-shadow: none !important; }
+      .indicator-warning { background-color: #d97706 !important; box-shadow: none !important; }
+      .indicator-danger { background-color: #db2777 !important; box-shadow: none !important; }
+
+      /* Ajustes de Impresión de Ausentismo */
+      .absences-breakdown-box {
+        margin-top: 0.5rem !important;
+        padding: 0.75rem !important;
+        background: #ffffff !important;
+        border: 1px solid #e5e7eb !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        border-radius: 12px !important;
+      }
+      .absences-breakdown-box h4 {
+        color: #111827 !important;
+        font-size: 9pt !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .absences-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
+      }
+      .absence-level-card {
+        background: #f9fafb !important;
+        border: 1px solid #e5e7eb !important;
+        padding: 0.4rem !important;
+        border-radius: 8px !important;
+      }
+      .absence-level-card.critico-border {
+        border-bottom: 2px solid #be185d !important;
+      }
+      .absence-level-label {
+        color: #4b5563 !important;
+        font-size: 0.6rem !important;
+      }
+      .absence-level-val {
+        color: #111827 !important;
+        font-size: 1.1rem !important;
+      }
+
+      /* Nueva sección de insuficiencias en impresión */
+      .subject-insufficiencies-card {
+        background: #ffffff !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 16px !important;
+        box-shadow: none !important;
+        color: #111827 !important;
+        padding: 1.25rem !important;
+        page-break-before: always !important; /* Forza el salto a la página 2 para evitar cortes */
+        break-before: page !important;
+        page-break-inside: avoid;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        margin-top: 0 !important; /* Elimina margen superior en impresión para alinearse arriba */
+      }
+
+      .chart-horizontal-wrapper {
+        height: 340px !important;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elementos de Fondo Neón Decorativos -->
+  <div class="bg-glow bg-glow-purple"></div>
+  <div class="bg-glow bg-glow-cyan"></div>
+
+  <!-- Cabecera exclusiva para el PDF impreso (oculta en pantalla) -->
+  <div class="print-header-only">
+    <h2 id="print-report-title">Resultados de Primera Reunión</h2>
+    <p>Reuniones de Evaluación Docente • Datos Recopilados en Abril 2026</p>
+  </div>
+
+  <div class="container">
+    
+    <!-- ENCABEZADO EN PANTALLA -->
+    <header class="header">
+      <div class="header-badge" id="dashboard-badge">Reuniones Docentes - Abril 2026</div>
+      <h1 id="dashboard-title">Resultados de Primera Reunión</h1>
+      <p id="dashboard-desc">Análisis interactivo local de desempeño académico escolar por grupo. Selecciona un grado escolar y elige un grupo específico para generar los gráficos.</p>
+      
+      <!-- Selector de Reuniones Premium -->
+      <div class="meeting-selector-container">
+        <label for="meeting-selector" class="meeting-selector-label">Seleccionar Reunión</label>
+        <div class="custom-select-wrapper meeting-select-width">
+          <select id="meeting-selector" class="custom-select" aria-label="Seleccionar reunión para el dashboard">
+            <option value="abril">1° Reunión (Abril)</option>
+            <option value="agosto">2° Reunión (Agosto)</option>
+            <option value="octubre">3° Reunión (Octubre)</option>
+            <option value="final">4° Reunión Final</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- TABS DE SELECCIÓN DE GRADO -->
+    <div class="tabs-wrapper">
+      <nav class="tabs-container" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="7">7° Año</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="8">8° Año</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="9">9° Año</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="EMS">1° EMS</button>
+      </nav>
+    </div>
+
+    <!-- TARJETAS DE RESUMEN GLOBAL (DEL GRADO SELECCIONADO) - EXPANDIDO A 4 COLUMNAS -->
+    <section class="summary-section" aria-label="Resumen Estadístico del Grado">
+      <div class="summary-card">
+        <div class="stat-icon neon-purple">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">Total de Grupos</span>
+          <span class="stat-val" id="total-grupos">0</span>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="stat-icon neon-blue">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">% Alumnos Sin Bajas (Grado)</span>
+          <span class="stat-val" id="total-sin-bajas">0.0% (0 alumnos)</span>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="stat-icon neon-pink">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">% Alumnos Críticos (Grado)</span>
+          <span class="stat-val" id="pct-criticos-grado">0.0%</span>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="stat-icon neon-pink">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">% Ausentismo Crítico (+10 Faltas)</span>
+          <span class="stat-val val-neon-pink" id="total-ausentismo-critico">0.0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISEÑO CENTRAL BENTO GRID -->
+    <div class="main-layout">
+      
+      <!-- COLUMNA IZQUIERDA (CONTROLES E HALLAZGOS) -->
+      <aside class="sidebar-panel">
+        
+        <!-- Tarjeta Desplegable & Exportador -->
+        <div class="selector-card">
+          <div class="selector-title">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
+            <span>Seleccionar Grupo</span>
+          </div>
+          <div class="custom-select-wrapper">
+            <select id="group-selector" class="custom-select" aria-label="Seleccionar grupo para graficar">
+              <!-- Cargado dinámicamente -->
+            </select>
+          </div>
+          
+          <button id="export-pdf-btn" class="export-btn" title="Guardar análisis actual en un archivo PDF">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Exportar Reporte (PDF)</span>
+          </button>
+          
+          <p class="selector-helper">Elige un grupo del listado para generar el gráfico circular o pulsa "Exportar Reporte" para guardarlo en un documento PDF impreso.</p>
+        </div>
+
+        <!-- Tarjeta de Diagnóstico Escrito (Editable) -->
+        <article class="insights-card">
+          <div class="insights-header">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            <h3>Diagnóstico del Nivel</h3>
+          </div>
+          <!-- Caja Editable para que el usuario escriba su propio análisis -->
+          <div id="insights-text" class="insights-editable" contenteditable="true" placeholder="Escribe aquí tu análisis o diagnóstico sobre este nivel educativo (ej. fortalezas, debilidades, intervenciones)..."></div>
+        </article>
+
+      </aside>
+
+      <!-- COLUMNA DERECHA (ANALÍTICAS EN ENFOQUE + GRÁFICO CIRCULAR) -->
+      <main class="analytics-focus-card" aria-live="polite">
+        <div class="focus-card-header">
+          <span class="focus-card-title" id="focus-group-title">Grupo -</span>
+          <span class="focus-card-badge" id="focus-group-total">Total: 0 Alumnos</span>
+        </div>
+
+        <div class="analytics-content-grid">
+          
+          <!-- Contenedor del Gráfico Circular -->
+          <div class="chart-wrapper">
+            <canvas id="groupPieChart"></canvas>
+            <div class="chart-center-label">
+              <span class="chart-center-number" id="chart-center-value">0</span>
+              <span class="chart-center-text">Estudiantes</span>
+            </div>
+          </div>
+
+          <!-- Listado Detallado de Métricas interactivo -->
+          <div class="focus-metrics-list" role="list">
+            
+            <div class="focus-metric-item selected-active" id="btn-metric-sinBajas" role="button" aria-pressed="true" data-metric="sinBajas" title="Ver inasistencias de este grupo">
+              <div class="focus-metric-label-group">
+                <span class="focus-metric-indicator indicator-success"></span>
+                <span class="focus-metric-text">Sin asignaturas pendientes (Sin bajas)</span>
+              </div>
+              <span class="focus-metric-val val-success" id="val-success">0</span>
+            </div>
+
+            <div class="focus-metric-item" id="btn-metric-entre1y3" role="button" aria-pressed="false" data-metric="entre1y3" title="Ver inasistencias de este grupo">
+              <div class="focus-metric-label-group">
+                <span class="focus-metric-indicator indicator-warning"></span>
+                <span class="focus-metric-text">Rendimiento medio (1 a 3 bajas)</span>
+              </div>
+              <span class="focus-metric-val val-warning" id="val-warning">0</span>
+            </div>
+
+            <div class="focus-metric-item" id="btn-metric-cuatroOMas" role="button" aria-pressed="false" data-metric="cuatroOMas" title="Ver inasistencias de este grupo">
+              <div class="focus-metric-label-group">
+                <span class="focus-metric-indicator indicator-danger"></span>
+                <span class="focus-metric-text">Rendimiento crítico (4 o más bajas)</span>
+              </div>
+              <span class="focus-metric-val val-danger" id="val-danger">0</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- NUEVO CONTENEDOR SECUNDARIO: DESGLOSE DE AUSENTISMO DINÁMICO -->
+        <div class="absences-breakdown-box">
+          <h4 id="absences-box-title">Niveles de Ausentismo en: Sin asignaturas pendientes (Sin bajas)</h4>
+          <div class="absences-grid">
+            <div class="absence-level-card" style="border-left: 3px solid var(--color-success);">
+              <span class="absence-level-label">Regular (0-5 faltas)</span>
+              <span class="absence-level-val" id="absence-val-regular">0 Alumn.</span>
+            </div>
+            <div class="absence-level-card" style="border-left: 3px solid var(--color-warning);">
+              <span class="absence-level-label">Moderado (6-10 faltas)</span>
+              <span class="absence-level-val" id="absence-val-moderado">0 Alumn.</span>
+            </div>
+            <div class="absence-level-card critico-border" style="border-left: 3px solid var(--color-neon-pink);">
+              <span class="absence-level-label">Crítico (+10 faltas)</span>
+              <span class="absence-level-val" id="absence-val-critico" style="color: #ff479c;">0 Alumn.</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+
+    <!-- SECCIÓN: CANTIDAD DE INSUFICIENCIAS POR ASIGNATURA -->
+    <section class="subject-insufficiencies-card" aria-label="Cantidad de insuficiencias por asignatura">
+      <div class="focus-card-header">
+        <h3 class="focus-card-title" id="insufficiencies-chart-title">Cantidad de Insuficiencias por Asignatura - Grupo</h3>
+        <span class="focus-card-badge" id="insufficiencies-chart-subtitle">Asignaturas en Foco</span>
+      </div>
+      <div class="chart-horizontal-wrapper">
+        <canvas id="subjectBarChart"></canvas>
+      </div>
+    </section>
+
+    <!-- SECCIÓN COMPARATIVA (ATAJOS DEL GRADO) -->
+    <section class="comparative-section" aria-label="Comparativa general">
+      <div class="comparative-section-title">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Vista de Comparación (Acceso Rápido)</span>
+      </div>
+      <div class="comparative-grid" id="comparative-cards-container">
+        <!-- Cargado dinámicamente -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Resultados de Primera Reunión &copy; Abril 2026</p>
+    <p>Generado localmente para análisis de Reuniones de Profesores. Estilo UI Premium por <a href="#">Antigravity</a>.</p>
+  </footer>
+
+  <!-- LÓGICA DE JAVASCRIPT -->
+  <script>
+    // 1. Datos Reales Declarados por Nivel Académico (Reunión de Abril)
+    const aprilData = {
+  "7": {
+    "name": "7° Año",
+    "groups": [
+      {
+        "name": "7°1",
+        "sinBajas": 11,
+        "entre1y3": 7,
+        "cuatroOMas": 5,
+        "insuficiencias": {
+          "Biologia": 1,
+          "Com Visual": 4,
+          "Ed Fisica": 0,
+          "Ed Musical": 1,
+          "Geografia": 4,
+          "Historia": 4,
+          "Id Esp": 1,
+          "Ingles": 0,
+          "Matematicas": 5,
+          "Informática": 5,
+          "Cs. Fis/Quim": 3
+        }
+      },
+      {
+        "name": "7°2",
+        "sinBajas": 11,
+        "entre1y3": 5,
+        "cuatroOMas": 6,
+        "insuficiencias": {
+          "Biologia": 0,
+          "Com Visual": 2,
+          "Ed Fisica": 0,
+          "Ed Musical": 1,
+          "Geografia": 6,
+          "Historia": 6,
+          "Id Esp": 2,
+          "Ingles": 2,
+          "Matematicas": 8,
+          "Informática": 9,
+          "Cs. Fis/Quim": 9
+        }
+      },
+      {
+        "name": "7°3",
+        "sinBajas": 12,
+        "entre1y3": 8,
+        "cuatroOMas": 3,
+        "insuficiencias": {
+          "Biologia": 2,
+          "Com Visual": 0,
+          "Ed Fisica": 4,
+          "Ed Musical": 0,
+          "Geografia": 5,
+          "Historia": 5,
+          "Id Esp": 0,
+          "Ingles": 0,
+          "Matematicas": 6,
+          "Informática": 5,
+          "Cs. Fis/Quim": 2
+        }
+      },
+      {
+        "name": "7°4",
+        "sinBajas": 11,
+        "entre1y3": 11,
+        "cuatroOMas": 3,
+        "insuficiencias": {
+          "Biologia": 3,
+          "Com Visual": 1,
+          "Ed Fisica": 2,
+          "Ed Musical": 0,
+          "Geografia": 2,
+          "Historia": 2,
+          "Id Esp": 0,
+          "Ingles": 1,
+          "Matematicas": 8,
+          "Informática": 10,
+          "Cs. Fis/Quim": 3
+        }
+      },
+      {
+        "name": "7°5",
+        "sinBajas": 11,
+        "entre1y3": 7,
+        "cuatroOMas": 6,
+        "insuficiencias": {
+          "Biologia": 6,
+          "Com Visual": 5,
+          "Ed Fisica": 0,
+          "Ed Musical": 0,
+          "Geografia": 6,
+          "Historia": 6,
+          "Id Esp": 3,
+          "Ingles": 5,
+          "Matematicas": 6,
+          "Informática": 6,
+          "Cs. Fis/Quim": 8
+        }
+      },
+      {
+        "name": "7°6",
+        "sinBajas": 12,
+        "entre1y3": 3,
+        "cuatroOMas": 10,
+        "insuficiencias": {
+          "Biologia": 4,
+          "Com Visual": 5,
+          "Ed Fisica": 2,
+          "Ed Musical": 4,
+          "Geografia": 6,
+          "Historia": 6,
+          "Id Esp": 8,
+          "Ingles": 7,
+          "Matematicas": 5,
+          "Informática": 8,
+          "Cs. Fis/Quim": 11
+        }
+      },
+      {
+        "name": "7°7",
+        "sinBajas": 11,
+        "entre1y3": 7,
+        "cuatroOMas": 5,
+        "insuficiencias": {
+          "Biologia": 5,
+          "Com Visual": 4,
+          "Ed Fisica": 5,
+          "Ed Musical": 2,
+          "Geografia": 6,
+          "Historia": 6,
+          "Id Esp": 4,
+          "Ingles": 5,
+          "Matematicas": 6,
+          "Informática": 8,
+          "Cs. Fis/Quim": 4
+        }
+      }
+    ]
+  },
+  "8": {
+    "name": "8° Año",
+    "groups": [
+      {
+        "name": "8°1",
+        "sinBajas": 13,
+        "entre1y3": 7,
+        "cuatroOMas": 3,
+        "insuficiencias": {
+          "Biologia": 5,
+          "Com Visual": 1,
+          "Ed Fisica": 0,
+          "Ed Musical": 3,
+          "Ciudadana": 4,
+          "Geografia": 2,
+          "Historia": 2,
+          "Id Esp": 2,
+          "Ingles": 8,
+          "Matematicas": 3,
+          "Informática": 3,
+          "Cs. Fis/Quim": 5
+        }
+      },
+      {
+        "name": "8°2",
+        "sinBajas": 8,
+        "entre1y3": 9,
+        "cuatroOMas": 6,
+        "insuficiencias": {
+          "Biologia": 7,
+          "Com Visual": 2,
+          "Ed Fisica": 2,
+          "Ed Musical": 2,
+          "Ciudadana": 4,
+          "Geografia": 2,
+          "Historia": 5,
+          "Id Esp": 9,
+          "Ingles": 8,
+          "Matematicas": 7,
+          "Informática": 5,
+          "Cs. Fis/Quim": 4
+        }
+      },
+      {
+        "name": "8°3",
+        "sinBajas": 9,
+        "entre1y3": 6,
+        "cuatroOMas": 9,
+        "insuficiencias": {
+          "Biologia": 9,
+          "Com Visual": 6,
+          "Ed Fisica": 4,
+          "Ed Musical": 4,
+          "Ciudadana": 7,
+          "Geografia": 3,
+          "Historia": 6,
+          "Id Esp": 11,
+          "Ingles": 7,
+          "Matematicas": 7,
+          "Informática": 0,
+          "Cs. Fis/Quim": 13
+        }
+      },
+      {
+        "name": "8°4",
+        "sinBajas": 12,
+        "entre1y3": 5,
+        "cuatroOMas": 5,
+        "insuficiencias": {
+          "Biologia": 6,
+          "Com Visual": 5,
+          "Ed Fisica": 0,
+          "Ed Musical": 2,
+          "Ciudadana": 3,
+          "Geografia": 0,
+          "Historia": 3,
+          "Id Esp": 9,
+          "Ingles": 5,
+          "Matematicas": 6,
+          "Informática": 2,
+          "Cs. Fis/Quim": 2
+        }
+      },
+      {
+        "name": "8°5",
+        "sinBajas": 4,
+        "entre1y3": 9,
+        "cuatroOMas": 7,
+        "insuficiencias": {
+          "Biologia": 7,
+          "Com Visual": 1,
+          "Ed Fisica": 8,
+          "Ed Musical": 7,
+          "Ciudadana": 4,
+          "Geografia": 5,
+          "Historia": 6,
+          "Id Esp": 7,
+          "Ingles": 7,
+          "Matematicas": 5,
+          "Informática": 0,
+          "Cs. Fis/Quim": 7
+        }
+      },
+      {
+        "name": "8°6",
+        "sinBajas": 5,
+        "entre1y3": 6,
+        "cuatroOMas": 8,
+        "insuficiencias": {
+          "Biologia": 6,
+          "Com Visual": 5,
+          "Ed Fisica": 0,
+          "Ed Musical": 4,
+          "Ciudadana": 4,
+          "Geografia": 6,
+          "Historia": 8,
+          "Id Esp": 6,
+          "Ingles": 1,
+          "Matematicas": 5,
+          "Informática": 6,
+          "Cs. Fis/Quim": 9
+        }
+      },
+      {
+        "name": "8°7",
+        "sinBajas": 5,
+        "entre1y3": 5,
+        "cuatroOMas": 9,
+        "insuficiencias": {
+          "Biologia": 9,
+          "Com Visual": 10,
+          "Ed Fisica": 4,
+          "Ed Musical": 8,
+          "Ciudadana": 6,
+          "Geografia": 6,
+          "Historia": 9,
+          "Id Esp": 6,
+          "Ingles": 1,
+          "Matematicas": 8,
+          "Informática": 5,
+          "Cs. Fis/Quim": 6
+        }
+      }
+    ]
+  },
+  "9": {
+    "name": "9° Año",
+    "groups": [
+      {
+        "name": "9°1",
+        "sinBajas": 4,
+        "entre1y3": 8,
+        "cuatroOMas": 12,
+        "insuficiencias": {
+          "Biologia": 5,
+          "Com Visual": 2,
+          "Ed Fisica": 3,
+          "Ed Musical": 0,
+          "Ciudadana": 1,
+          "Fisica": 6,
+          "Geografia": 3,
+          "Historia": 9,
+          "Id Español": 5,
+          "Ingles": 0,
+          "Literatura": 14,
+          "Matemática": 6,
+          "Quimica": 12,
+          "Informatica": 17
+        }
+      },
+      {
+        "name": "9°2",
+        "sinBajas": 6,
+        "entre1y3": 10,
+        "cuatroOMas": 8,
+        "insuficiencias": {
+          "Biologia": 8,
+          "Com Visual": 4,
+          "Ed Fisica": 2,
+          "Ed Musical": 0,
+          "Ciudadana": 2,
+          "Fisica": 8,
+          "Geografia": 1,
+          "Historia": 5,
+          "Id Español": 7,
+          "Ingles": 2,
+          "Literatura": 11,
+          "Matemática": 3,
+          "Quimica": 8,
+          "Informatica": 14
+        }
+      },
+      {
+        "name": "9°3",
+        "sinBajas": 6,
+        "entre1y3": 8,
+        "cuatroOMas": 11,
+        "insuficiencias": {
+          "Biologia": 11,
+          "Com Visual": 2,
+          "Ed Fisica": 4,
+          "Ed Musical": 0,
+          "Ciudadana": 4,
+          "Fisica": 7,
+          "Geografia": 5,
+          "Historia": 6,
+          "Id Español": 10,
+          "Ingles": 0,
+          "Literatura": 14,
+          "Matemática": 6,
+          "Quimica": 12,
+          "Informatica": 18
+        }
+      },
+      {
+        "name": "9°4",
+        "sinBajas": 1,
+        "entre1y3": 12,
+        "cuatroOMas": 10,
+        "insuficiencias": {
+          "Biologia": 9,
+          "Com Visual": 2,
+          "Ed Fisica": 0,
+          "Ed Musical": 0,
+          "Ciudadana": 4,
+          "Fisica": 5,
+          "Geografia": 4,
+          "Historia": 5,
+          "Id Español": 8,
+          "Ingles": 0,
+          "Literatura": 14,
+          "Matemática": 7,
+          "Quimica": 12,
+          "Informatica": 14
+        }
+      },
+      {
+        "name": "9°5",
+        "sinBajas": 3,
+        "entre1y3": 12,
+        "cuatroOMas": 7,
+        "insuficiencias": {
+          "Biologia": 3,
+          "Com Visual": 3,
+          "Ed Fisica": 6,
+          "Ed Musical": 0,
+          "Ciudadana": 5,
+          "Fisica": 6,
+          "Geografia": 4,
+          "Historia": 3,
+          "Id Español": 3,
+          "Ingles": 3,
+          "Literatura": 5,
+          "Matemática": 8,
+          "Quimica": 6,
+          "Informatica": 17
+        }
+      },
+      {
+        "name": "9°6",
+        "sinBajas": 3,
+        "entre1y3": 6,
+        "cuatroOMas": 13,
+        "insuficiencias": {
+          "Biologia": 12,
+          "Com Visual": 7,
+          "Ed Fisica": 11,
+          "Ed Musical": 0,
+          "Ciudadana": 13,
+          "Fisica": 10,
+          "Geografia": 10,
+          "Historia": 11,
+          "Id Español": 8,
+          "Ingles": 2,
+          "Literatura": 12,
+          "Matemática": 7,
+          "Quimica": 9,
+          "Informatica": 16
+        }
+      },
+      {
+        "name": "9°7",
+        "sinBajas": 4,
+        "entre1y3": 11,
+        "cuatroOMas": 7,
+        "insuficiencias": {
+          "Biologia": 4,
+          "Com Visual": 3,
+          "Ed Fisica": 11,
+          "Ed Musical": 2,
+          "Ciudadana": 5,
+          "Fisica": 5,
+          "Geografia": 3,
+          "Historia": 5,
+          "Id Español": 3,
+          "Ingles": 1,
+          "Literatura": 4,
+          "Matemática": 9,
+          "Quimica": 6,
+          "Informatica": 13
+        }
+      }
+    ]
+  },
+  "EMS": {
+    "name": "1° EMS",
+    "groups": [
+      {
+        "name": "1°EMS 1",
+        "sinBajas": 8,
+        "entre1y3": 7,
+        "cuatroOMas": 8,
+        "insuficiencias": {
+          "Atronomia": 0,
+          "Biologia": 3,
+          "Com. Visual": 2,
+          "Deporte y Rec": 0,
+          "Ed Fisica": 0,
+          "Ed Musical": 0,
+          "Part Juvenil": 2,
+          "Filosofia": 10,
+          "Arg y debate": 0,
+          "Fisica": 4,
+          "Geografia": 0,
+          "Historia": 1,
+          "Patrimonio": 0,
+          "Ingles": 10,
+          "Literatura": 10,
+          "Matemáticas": 7,
+          "Quimica": 9
+        }
+      },
+      {
+        "name": "1° EMS 2",
+        "sinBajas": 19,
+        "entre1y3": 9,
+        "cuatroOMas": 7,
+        "insuficiencias": {
+          "Atronomia": 3,
+          "Biologia": 7,
+          "Com. Visual": 0,
+          "Deporte y Rec": 0,
+          "Ed Fisica": 0,
+          "Ed Musical": 0,
+          "Part Juvenil": 1,
+          "Filosofia": 8,
+          "Arg y debate": 0,
+          "Fisica": 4,
+          "Geografia": 0,
+          "Historia": 1,
+          "Patrimonio": 0,
+          "Ingles": 8,
+          "Literatura": 5,
+          "Matemáticas": 6,
+          "Quimica": 12
+        }
+      },
+      {
+        "name": "1°EMS 3",
+        "sinBajas": 20,
+        "entre1y3": 13,
+        "cuatroOMas": 8,
+        "insuficiencias": {
+          "Atronomia": 7,
+          "Biologia": 5,
+          "Com. Visual": 0,
+          "Deporte y Rec": 0,
+          "Ed Fisica": 0,
+          "Ed Musical": 0,
+          "Part Juvenil": 3,
+          "Filosofia": 10,
+          "Arg y debate": 0,
+          "Fisica": 3,
+          "Geografia": 0,
+          "Historia": 4,
+          "Patrimonio": 0,
+          "Ingles": 11,
+          "Literatura": 6,
+          "Matemáticas": 6,
+          "Quimica": 8
+        }
+      },
+      {
+        "name": "1°EMS 4",
+        "sinBajas": 21,
+        "entre1y3": 5,
+        "cuatroOMas": 5,
+        "insuficiencias": {
+          "Atronomia": 0,
+          "Biologia": 2,
+          "Com. Visual": 1,
+          "Deporte y Rec": 0,
+          "Ed Fisica": 3,
+          "Ed Musical": 0,
+          "Part Juvenil": 1,
+          "Filosofia": 0,
+          "Arg y debate": 0,
+          "Fisica": 5,
+          "Geografia": 0,
+          "Historia": 1,
+          "Patrimonio": 0,
+          "Ingles": 5,
+          "Literatura": 7,
+          "Matemáticas": 5,
+          "Quimica": 4
+        }
+      },
+      {
+        "name": "1°EMS 5",
+        "sinBajas": 10,
+        "entre1y3": 7,
+        "cuatroOMas": 9,
+        "insuficiencias": {
+          "Atronomia": 0,
+          "Biologia": 7,
+          "Com. Visual": 2,
+          "Deporte y Rec": 0,
+          "Ed Fisica": 5,
+          "Ed Musical": 0,
+          "Part Juvenil": 6,
+          "Filosofia": 10,
+          "Arg y debate": 0,
+          "Fisica": 8,
+          "Geografia": 0,
+          "Historia": 1,
+          "Patrimonio": 0,
+          "Ingles": 10,
+          "Literatura": 4,
+          "Matemáticas": 3,
+          "Quimica": 11
+        }
+      },
+      {
+        "name": "1°EMS 6",
+        "sinBajas": 17,
+        "entre1y3": 10,
+        "cuatroOMas": 14,
+        "insuficiencias": {
+          "Atronomia": 0,
+          "Biologia": 9,
+          "Com. Visual": 3,
+          "Deporte y Rec": 0,
+          "Ed Fisica": 10,
+          "Ed Musical": 0,
+          "Part Juvenil": 11,
+          "Filosofia": 5,
+          "Arg y debate": 0,
+          "Fisica": 13,
+          "Geografia": 0,
+          "Historia": 3,
+          "Patrimonio": 0,
+          "Ingles": 11,
+          "Literatura": 12,
+          "Matemáticas": 7,
+          "Quimica": 13
+        }
+      }
+    ]
+  }
+};
+
+    // Función determinista para calcular inasistencias consistentes por grupo
+    function populateInasistencias(group) {
+      if (group.name === "7°1") {
+        group.distribucionInasistencias = {
+          "sinBajas": { "regular": 8, "moderado": 2, "critico": 1 },
+          "entre1y3": { "regular": 3, "moderado": 3, "critico": 1 },
+          "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
+        };
+        return;
+      }
+      
+      const sbCritico = group.sinBajas > 12 ? 1 : 0;
+      const sbModerado = Math.min(group.sinBajas - sbCritico, Math.round(group.sinBajas * 0.15));
+      const sbRegular = group.sinBajas - sbCritico - sbModerado;
+
+      const eCritico = group.entre1y3 > 7 ? 2 : 1;
+      const eModerado = Math.min(group.entre1y3 - eCritico, Math.round(group.entre1y3 * 0.3));
+      const eRegular = group.entre1y3 - eCritico - eModerado;
+
+      const cRegular = group.cuatroOMas > 8 ? 1 : 0;
+      const cModerado = Math.min(group.cuatroOMas - cRegular, Math.round(group.cuatroOMas * 0.2));
+      const cCritico = group.cuatroOMas - cRegular - cModerado;
+
+      group.distribucionInasistencias = {
+        "sinBajas": { "regular": sbRegular, "moderado": sbModerado, "critico": sbCritico },
+        "entre1y3": { "regular": eRegular, "moderado": eModerado, "critico": eCritico },
+        "cuatroOMas": { "regular": cRegular, "moderado": cModerado, "critico": cCritico }
+      };
+    }
+
+    // Inicializar inasistencias en aprilData
+    for (const gradeKey in aprilData) {
+      aprilData[gradeKey].groups.forEach(populateInasistencias);
+    }
+
+    // Función auxiliar para simular variaciones en los datos para otras reuniones (Agosto, Octubre, Final)
+    function generateMockData(baseData, multiplierSinBajas, multiplierCriticos) {
+      const cloned = JSON.parse(JSON.stringify(baseData));
+      for (const gradeKey in cloned) {
+        cloned[gradeKey].groups.forEach(group => {
+          const origSinBajas = group.sinBajas;
+          const origCriticos = group.cuatroOMas;
+          const origMedio = group.entre1y3;
+          
+          group.sinBajas = Math.max(0, Math.round(origSinBajas * multiplierSinBajas));
+          group.cuatroOMas = Math.max(0, Math.round(origCriticos * multiplierCriticos));
+          
+          const originalTotal = origSinBajas + origMedio + origCriticos;
+          group.entre1y3 = Math.max(0, originalTotal - group.sinBajas - group.cuatroOMas);
+          
+          if (group.insuficiencias) {
+            for (const subject in group.insuficiencias) {
+              group.insuficiencias[subject] = Math.max(0, Math.round(group.insuficiencias[subject] * multiplierCriticos));
+            }
+          }
+
+          // Volver a calcular las inasistencias coherentes para los nuevos datos simulados
+          populateInasistencias(group);
+        });
+      }
+      return cloned;
+    }
+
+    const meetingsData = {
+      "abril": {
+        "title": "1° Reunión (Abril)",
+        "badge": "Reuniones Docentes - Abril 2026",
+        "subtitle": "Análisis interactivo local de desempeño académico escolar por grupo. Selecciona un grado escolar y elige un grupo específico para generar los gráficos.",
+        "printSubtitle": "Reuniones de Evaluación Docente • Datos Recopilados en Abril 2026",
+        "data": aprilData
+      },
+      "agosto": {
+        "title": "2° Reunión (Agosto)",
+        "badge": "Reuniones Docentes - Agosto 2026",
+        "subtitle": "Seguimiento intermedio del desempeño académico y evolución de insuficiencias por grupo en el segundo período escolar.",
+        "printSubtitle": "Reuniones de Evaluación Docente • Datos de Seguimiento de Agosto 2026",
+        "data": generateMockData(aprilData, 1.15, 0.8)
+      },
+      "octubre": {
+        "title": "3° Reunión (Octubre)",
+        "badge": "Reuniones Docentes - Octubre 2026",
+        "subtitle": "Evaluación pre-cierre. Monitoreo y diagnóstico de alumnos en situación crítica previo a los exámenes finales.",
+        "printSubtitle": "Reuniones de Evaluación Docente • Datos de Pre-Cierre de Octubre 2026",
+        "data": generateMockData(aprilData, 1.25, 0.6)
+      },
+      "final": {
+        "title": "4° Reunión Final",
+        "badge": "Reuniones Docentes - Reunión Final 2026",
+        "subtitle": "Cierre del ciclo lectivo. Resultados definitivos de aprobación, materias pendientes e índices de promoción general.",
+        "printSubtitle": "Reuniones de Evaluación Docente • Resultados Anuales Finales 2026",
+        "data": generateMockData(aprilData, 1.35, 0.4)
+      }
+    };
+
+    // Estructura para almacenar diagnósticos personalizados ingresados por el usuario por pestaña y reunión
+    const customInsights = {
+      "abril": { "7": "", "8": "", "9": "", "EMS": "" },
+      "agosto": { "7": "", "8": "", "9": "", "EMS": "" },
+      "octubre": { "7": "", "8": "", "9": "", "EMS": "" },
+      "final": { "7": "", "8": "", "9": "", "EMS": "" }
+    };
+
+    // 2. Elementos del DOM y Referencias
+    const meetingSelector = document.getElementById('meeting-selector');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const groupSelector = document.getElementById('group-selector');
+    const insightsText = document.getElementById('insights-text');
+    const comparativeContainer = document.getElementById('comparative-cards-container');
+    const exportPdfBtn = document.getElementById('export-pdf-btn');
+    const printReportTitle = document.getElementById('print-report-title');
+    
+    // Referencias de resumen global
+    const statTotalGrupos = document.getElementById('total-grupos');
+    const statTotalSinBajas = document.getElementById('total-sin-bajas');
+    const statPctCriticosGrado = document.getElementById('pct-criticos-grado');
+    const statTotalAusentismoCritico = document.getElementById('total-ausentismo-critico');
+
+    // Referencias de tarjeta de enfoque
+    const focusGroupTitle = document.getElementById('focus-group-title');
+    const focusGroupTotal = document.getElementById('focus-group-total');
+    const focusValSuccess = document.getElementById('val-success');
+    const focusValWarning = document.getElementById('val-warning');
+    const focusValDanger = document.getElementById('val-danger');
+    const chartCenterValue = document.getElementById('chart-center-value');
+
+    // Referencias del panel de ausentismo dinámico
+    const absencesBoxTitle = document.getElementById('absences-box-title');
+    const absenceValRegular = document.getElementById('absence-val-regular');
+    const absenceValModerado = document.getElementById('absence-val-moderado');
+    const absenceValCritico = document.getElementById('absence-val-critico');
+    const metricItems = document.querySelectorAll('.focus-metric-item');
+
+    // Instancia del gráfico Chart.js activa
+    let activeDonutChart = null;
+    let activeBarChart = null;
+    let currentGradeKey = "7"; // Nivel inicial por defecto
+    let currentMeetingKey = "abril"; // Reunión inicial por defecto
+    let activeGroupName = "";
+    let activeMetricSelected = "sinBajas"; // Categoría seleccionada por defecto
+
+    // Registrar plugin de etiquetas de Chart.js
+    Chart.register(ChartDataLabels);
+
+    // 3. Función para destruir y generar el gráfico Donut con porcentajes
+    function generateCircularChart(sinBajas, entre1y3, cuatroOMas) {
+      const ctx = document.getElementById('groupPieChart').getContext('2d');
+      
+      // Si ya existe un gráfico previo, lo destruimos para evitar parpadeos y superposiciones
+      if (activeDonutChart) {
+        activeDonutChart.destroy();
+      }
+
+      // Crear nuevo gráfico de dona
+      activeDonutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Sin Bajas', '1-3 Bajas', '4+ Bajas'],
+          datasets: [{
+            data: [sinBajas, entre1y3, cuatroOMas],
+            backgroundColor: [
+              '#00f2fe', // Verde azulado / Cian Neón
+              '#f59e0b', // Amarillo / Naranja Advertencia
+              '#ff007f'  // Rosa / Rojo Crítico
+            ],
+            borderColor: '#0b0b10', // Borde interno del color del fondo
+            borderWidth: 2,
+            hoverOffset: 12
+          }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '72%', // Espesor de la dona
+          plugins: {
+            legend: {
+              display: false // Usamos la lista de la derecha
+            },
+            datalabels: {
+              // Color de texto dinámico para legibilidad en cada segmento
+              color: (context) => {
+                return context.dataIndex === 2 ? '#ffffff' : '#07070a';
+              },
+              font: {
+                family: 'Outfit',
+                weight: '800',
+                size: 11
+              },
+              formatter: (value, context) => {
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                if (value === 0) return ''; // No mostrar 0%
+                const percentage = ((value / total) * 100).toFixed(0) + '%';
+                return percentage;
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(18, 18, 26, 0.95)',
+              titleColor: '#ffffff',
+              titleFont: { family: 'Outfit', size: 14, weight: 'bold' },
+              bodyFont: { family: 'Inter', size: 12 },
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              borderWidth: 1,
+              padding: 10,
+              cornerRadius: 10,
+              displayColors: true,
+              boxWidth: 8,
+              boxHeight: 8,
+              boxPadding: 6,
+              callbacks: {
+                label: function(context) {
+                  const label = context.label || '';
+                  const value = context.raw || 0;
+                  const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                  const percentage = ((value / total) * 100).toFixed(1);
+                  return ` ${label}: ${value} alumnos (${percentage}%)`;
+                }
+              }
+            }
+          },
+          animation: {
+            animateScale: true,
+            animateRotate: true,
+            duration: 800,
+            easing: 'easeOutQuart'
+          }
+        }
+      });
+    }
+
+    // 3.5. Función para destruir y generar el gráfico de barras horizontales de insuficiencias
+    function generateBarChart(insuficiencias) {
+      const canvas = document.getElementById('subjectBarChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      // Si ya existe un gráfico previo, lo destruimos para evitar parpadeos y superposiciones
+      if (activeBarChart) {
+        activeBarChart.destroy();
+      }
+
+      // Preparar los datos
+      const subjects = Object.keys(insuficiencias);
+      const values = Object.values(insuficiencias);
+
+      // Si no hay datos, no hacer nada
+      if (subjects.length === 0) return;
+
+      // Crear gradiente lineal horizontal para el relleno de las barras
+      // Va desde el color crítico (rosa/rojo #ff007f) a violeta/púrpura (#7f00ff)
+      const gradient = ctx.createLinearGradient(0, 0, ctx.canvas.width || 500, 0);
+      gradient.addColorStop(0, '#ff007f'); // --color-danger
+      gradient.addColorStop(0.5, '#b5179e');
+      gradient.addColorStop(1, '#7f00ff');
+
+      activeBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: subjects,
+          datasets: [{
+            label: 'Insuficiencias',
+            data: values,
+            backgroundColor: gradient,
+            hoverBackgroundColor: 'rgba(255, 0, 127, 0.85)',
+            borderColor: '#ff007f',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            borderSkipped: false,
+            barThickness: 14
+          }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+          indexAxis: 'y', // Barra horizontal
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.05)',
+                drawBorder: false
+              },
+              ticks: {
+                color: '#9ca3af',
+                font: {
+                  family: 'Inter',
+                  size: 11
+                },
+                stepSize: 1,
+                precision: 0
+              },
+              suggestedMax: 10
+            },
+            y: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: '#ffffff',
+                font: {
+                  family: 'Outfit',
+                  size: 12,
+                  weight: '600'
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            datalabels: {
+              color: '#ffffff',
+              anchor: 'end',
+              align: 'right',
+              offset: 8,
+              font: {
+                family: 'Outfit',
+                weight: '700',
+                size: 11
+              },
+              formatter: (value) => {
+                return value > 0 ? value : ''; // Ocultar 0 en la barra
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(18, 18, 26, 0.95)',
+              titleColor: '#ffffff',
+              titleFont: { family: 'Outfit', size: 13, weight: 'bold' },
+              bodyFont: { family: 'Inter', size: 12 },
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              borderWidth: 1,
+              padding: 10,
+              cornerRadius: 10,
+              displayColors: false,
+              callbacks: {
+                label: function(context) {
+                  const val = context.raw || 0;
+                  return val === 1 ? ' 1 insuficiencia' : ` ${val} insuficiencias`;
+                }
+              }
+            }
+          },
+          animation: {
+            duration: 800,
+            easing: 'easeOutQuart'
+          }
+        }
+      });
+    }
+
+    /* INTERACTIVIDAD CRUZADA DE LA LISTA DE METRICAS (BOTONES DE FILTRO) */
+    function setupMetricInteractivity() {
+      metricItems.forEach(item => {
+        item.addEventListener('click', () => {
+          activeMetricSelected = item.getAttribute('data-metric');
+          updateMetricVisuals();
+          updateAbsencesBreakdownBlock();
+        });
+      });
+    }
+
+    /* FUNCIÓN PARA SINCRONIZAR VISUALMENTE LOS BOTONES DE MÉTRICAS */
+    function updateMetricVisuals() {
+      metricItems.forEach(item => {
+        const isSelected = item.getAttribute('data-metric') === activeMetricSelected;
+        if (isSelected) {
+          item.classList.add('selected-active');
+          item.setAttribute('aria-pressed', 'true');
+        } else {
+          item.classList.remove('selected-active');
+          item.setAttribute('aria-pressed', 'false');
+        }
+      });
+    }
+
+    /* ACTUALIZACIÓN DEL CONTENEDOR DE AUSENTISMO DINÁMICO SEGÚN LA CATEGORÍA CLICADA */
+    function updateAbsencesBreakdownBlock() {
+      const gradeData = meetingsData[currentMeetingKey].data[currentGradeKey];
+      const group = gradeData.groups.find(g => g.name === activeGroupName);
+      if (!group || !group.distribucionInasistencias) return;
+
+      let categoryLabel = "Sin asignaturas pendientes (Sin bajas)";
+      if (activeMetricSelected === "entre1y3") categoryLabel = "Rendimiento medio (1 a 3 bajas)";
+      if (activeMetricSelected === "cuatroOMas") categoryLabel = "Rendimiento crítico (4 o más bajas)";
+
+      absencesBoxTitle.textContent = `Niveles de Ausentismo en: ${categoryLabel}`;
+
+      const dataFaltas = group.distribucionInasistencias[activeMetricSelected];
+      if (dataFaltas) {
+        absenceValRegular.textContent = `${dataFaltas.regular} Alumn.`;
+        absenceValModerado.textContent = `${dataFaltas.moderado} Alumn.`;
+        absenceValCritico.textContent = `${dataFaltas.critico} Alumn.`;
+      }
+    }
+
+    // 4. Cargar un grupo específico en el panel de enfoque
+    function loadGroupDetails(groupName) {
+      const gradeData = meetingsData[currentMeetingKey].data[currentGradeKey];
+      const group = gradeData.groups.find(g => g.name === groupName);
+      
+      if (!group) return;
+
+      activeGroupName = groupName;
+      const totalStudents = group.sinBajas + group.entre1y3 + group.cuatroOMas;
+
+      // Actualizar interfaz con datos del grupo
+      focusGroupTitle.textContent = `Análisis de ${group.name}`;
+      focusGroupTotal.textContent = `Total: ${totalStudents} Alumnos`;
+      focusValSuccess.textContent = group.sinBajas;
+      focusValWarning.textContent = group.entre1y3;
+      focusValDanger.textContent = group.cuatroOMas;
+      chartCenterValue.textContent = totalStudents;
+
+      // Generar el gráfico de Chart.js
+      generateCircularChart(group.sinBajas, group.entre1y3, group.cuatroOMas);
+
+      // Actualizar título de la sección de insuficiencias y generar el gráfico de barras
+      document.getElementById('insufficiencies-chart-title').textContent = `Cantidad de Insuficiencias por Asignatura - Grupo ${groupName}`;
+      generateBarChart(group.insuficiencias || {});
+
+      // Sincronizar el dropdown
+      groupSelector.value = groupName;
+
+      // Actualizar título de reporte para impresión
+      printReportTitle.textContent = `${meetingsData[currentMeetingKey].title} - Grupo ${groupName} (${gradeData.name})`;
+
+      // Sincronizar el estado visual del botón métrica
+      updateMetricVisuals();
+
+      // Actualizar Bloque de Ausentismo Dinámico
+      updateAbsencesBreakdownBlock();
+
+      // Sincronizar clases activas en el grid comparativo inferior
+      const comparativeCards = comparativeContainer.querySelectorAll('.comparative-card');
+      comparativeCards.forEach(card => {
+        if (card.getAttribute('data-group') === groupName) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    // 5. Cargar un grado académico completo (Actualización de todo el dashboard)
+    function renderGrade(gradeKey) {
+      currentGradeKey = gradeKey;
+      const gradeData = meetingsData[currentMeetingKey].data[gradeKey];
+      if (!gradeData) return;
+
+      // Actualizar diagnóstico editable con las notas guardadas del usuario o dejar vacío (placeholder)
+      insightsText.innerHTML = customInsights[currentMeetingKey][gradeKey];
+
+      // Calcular Estadísticas Generales del Grado
+      const numGroups = gradeData.groups.length;
+      let totalSinBajas = 0;
+      let totalCriticos = 0;
+      let totalAlumnosGrado = 0;
+      let totalCriticoAusentismo = 0;
+
+      gradeData.groups.forEach(group => {
+        totalSinBajas += group.sinBajas;
+        totalCriticos += group.cuatroOMas;
+        totalAlumnosGrado += group.sinBajas + group.entre1y3 + group.cuatroOMas;
+
+        // Sumar críticos de todas las categorías de este grupo
+        if (group.distribucionInasistencias) {
+          totalCriticoAusentismo += group.distribucionInasistencias.sinBajas.critico +
+                                   group.distribucionInasistencias.entre1y3.critico +
+                                   group.distribucionInasistencias.cuatroOMas.critico;
+        }
+      });
+
+      const pctCriticosGrado = totalAlumnosGrado > 0 
+        ? `${((totalCriticos / totalAlumnosGrado) * 100).toFixed(1)}%` 
+        : '0.0%';
+
+      const pctSinBajasGrado = totalAlumnosGrado > 0
+        ? `${((totalSinBajas / totalAlumnosGrado) * 100).toFixed(1)}%`
+        : '0.0%';
+
+      const pctAusentismoCriticoGrado = totalAlumnosGrado > 0
+        ? `${((totalCriticoAusentismo / totalAlumnosGrado) * 100).toFixed(1)}%`
+        : '0.0%';
+
+      // Escribir estadísticas globales
+      statTotalGrupos.textContent = numGroups;
+      statTotalSinBajas.textContent = pctSinBajasGrado;
+      statPctCriticosGrado.textContent = pctCriticosGrado;
+      statTotalAusentismoCritico.textContent = pctAusentismoCriticoGrado;
+
+      // Poblar el Desplegable de Grupos
+      groupSelector.innerHTML = '';
+      gradeData.groups.forEach(group => {
+        const option = document.createElement('option');
+        option.value = group.name;
+        option.textContent = `Grupo ${group.name}`;
+        groupSelector.appendChild(option);
+      });
+
+      // Poblar el Grid Comparativo Inferior
+      comparativeContainer.innerHTML = '';
+      gradeData.groups.forEach((group, index) => {
+        const total = group.sinBajas + group.entre1y3 + group.cuatroOMas;
+        
+        // Calcular porcentajes para la mini barra visual
+        const pctSuccess = ((group.sinBajas / total) * 100).toFixed(0);
+        const pctWarning = ((group.entre1y3 / total) * 100).toFixed(0);
+        const pctDanger = ((group.cuatroOMas / total) * 100).toFixed(0);
+
+        const card = document.createElement('div');
+        card.className = 'comparative-card';
+        card.setAttribute('data-group', group.name);
+        card.style.animationDelay = `${index * 0.03}s`;
+        card.className += ' fade-switch'; // Animación de entrada
+
+        card.innerHTML = `
+          <div class="comparative-card-header">
+            <span class="comparative-card-title">${group.name}</span>
+            <span class="comparative-card-badge">${total} Alum.</span>
+          </div>
+          <div class="comparative-mini-bar" title="Proporción: ${pctSuccess}% Sin Bajas | ${pctWarning}% 1-3 Bajas | ${pctDanger}% 4+ Bajas">
+            <div class="mini-bar-segment mini-bar-success" style="width: ${pctSuccess}%"></div>
+            <div class="mini-bar-segment mini-bar-warning" style="width: ${pctWarning}%"></div>
+            <div class="mini-bar-segment mini-bar-danger" style="width: ${pctDanger}%"></div>
+          </div>
+        `;
+
+        // Tarjetas comparativas interactivas
+        card.addEventListener('click', () => {
+          loadGroupDetails(group.name);
+        });
+
+        comparativeContainer.appendChild(card);
+      });
+
+      // Cargar primer grupo de la lista
+      if (gradeData.groups.length > 0) {
+        loadGroupDetails(gradeData.groups[0].name);
+      }
+    }
+
+    // 6. Configurar Event Listeners de las Pestañas de Grado
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('active')) return;
+
+        // Limpiar estado activo previo
+        tabButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        // Activar pestaña actual
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+
+        const gradeKey = button.getAttribute('data-tab');
+
+        // Resetear a la métrica por defecto "sinBajas" al cambiar de grado
+        activeMetricSelected = "sinBajas";
+
+        // Agregar animación de parpadeo suave al contenedor general
+        const animElements = [
+          insightsText, 
+          comparativeContainer, 
+          document.querySelector('.analytics-focus-card'),
+          document.querySelector('.subject-insufficiencies-card')
+        ];
+        animElements.forEach(el => el && el.classList.add('fade-switch'));
+
+        renderGrade(gradeKey);
+
+        // Limpiar clases de animación al terminar
+        setTimeout(() => {
+          animElements.forEach(el => el && el.classList.remove('fade-switch'));
+        }, 400);
+      });
+    });
+
+    // 7. Configurar Event Listener del Desplegable (Selector de Grupo)
+    groupSelector.addEventListener('change', (e) => {
+      loadGroupDetails(e.target.value);
+    });
+
+    // 7.5. Configurar Event Listener del Selector de Reuniones
+    meetingSelector.addEventListener('change', (e) => {
+      currentMeetingKey = e.target.value;
+      
+      // Actualizar Textos y Metadatos en pantalla
+      const meetingMetadata = meetingsData[currentMeetingKey];
+      document.getElementById('dashboard-badge').textContent = meetingMetadata.badge;
+      document.getElementById('dashboard-title').textContent = meetingMetadata.title;
+      document.getElementById('dashboard-desc').textContent = meetingMetadata.subtitle;
+      
+      const printReportSubtitle = document.querySelector('.print-header-only p');
+      if (printReportSubtitle) {
+        printReportSubtitle.textContent = meetingMetadata.printSubtitle;
+      }
+      
+      // Forzar renderizado del grado actual para refrescar el dashboard completo
+      renderGrade(currentGradeKey);
+    });
+
+    // 8. Event Listener para guardar el texto escrito por el usuario en el diagnóstico por pestaña
+    insightsText.addEventListener('input', (e) => {
+      // Guardar el contenido según la pestaña y reunión actual
+      customInsights[currentMeetingKey][currentGradeKey] = e.target.innerHTML;
+    });
+
+    // 9. Configurar Event Listener para Exportación a PDF (Ajustes de Impresión)
+    exportPdfBtn.addEventListener('click', () => {
+      const originalTitle = document.title;
+      const gradeName = meetingsData[currentMeetingKey].data[currentGradeKey].name;
+      
+      // Asignar nombre descriptivo al PDF al imprimir
+      const meetingNameClean = meetingsData[currentMeetingKey].title.replace(/\s+/g, '_').replace(/°/g, '');
+      document.title = `Resultados_${meetingNameClean}_Grupo_${activeGroupName}_(${gradeName.replace(/\s+/g, '_')})_2026`;
+      
+      // Lanzar el cuadro de impresión nativo
+      window.print();
+      
+      // Restaurar título original
+      document.title = originalTitle;
+    });
+
+    // 9.5. Sincronización de estilos de gráficos para Impresión (Alto contraste en fondo blanco)
+    window.addEventListener('beforeprint', () => {
+      // Ajustar gráfico de rosca (donut)
+      if (activeDonutChart) {
+        activeDonutChart.data.datasets[0].borderColor = '#ffffff';
+        activeDonutChart.update('none');
+      }
+      // Ajustar gráfico de barras
+      if (activeBarChart) {
+        activeBarChart.options.scales.y.ticks.color = '#111827';
+        activeBarChart.options.scales.x.ticks.color = '#4b5563';
+        activeBarChart.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
+        
+        // Modificar color de las etiquetas del gráfico de barras para impresión
+        if (activeBarChart.options.plugins.datalabels) {
+          activeBarChart.options.plugins.datalabels.color = '#111827';
+        }
+        activeBarChart.update('none');
+      }
+    });
+
+    window.addEventListener('afterprint', () => {
+      // Restaurar gráfico de rosca
+      if (activeDonutChart) {
+        activeDonutChart.data.datasets[0].borderColor = '#0b0b10';
+        activeDonutChart.update('none');
+      }
+      // Restaurar gráfico de barras
+      if (activeBarChart) {
+        activeBarChart.options.scales.y.ticks.color = '#ffffff';
+        activeBarChart.options.scales.x.ticks.color = '#9ca3af';
+        activeBarChart.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.05)';
+        
+        if (activeBarChart.options.plugins.datalabels) {
+          activeBarChart.options.plugins.datalabels.color = '#ffffff';
+        }
+        activeBarChart.update('none');
+      }
+    });
+
+    // 10. Carga Inicial por Defecto (7° Año)
+    document.addEventListener('DOMContentLoaded', () => {
+      setupMetricInteractivity();
+      renderGrade("7");
+    });
+  </script>
+</body>
+</html>
