@@ -27,12 +27,22 @@ var focusValWarning   = document.getElementById('val-warning');
 var focusValDanger    = document.getElementById('val-danger');
 var chartCenterValue  = document.getElementById('chart-center-value');
 
-// Panel de Ausentismo Dinámico
-var absencesBoxTitle   = document.getElementById('absences-box-title');
-var absenceValRegular  = document.getElementById('absence-val-regular');
-var absenceValModerado = document.getElementById('absence-val-moderado');
-var absenceValCritico  = document.getElementById('absence-val-critico');
-var metricItems        = document.querySelectorAll('.focus-metric-item');
+// Panel de Ausentismo Dinámico — todas las categorías
+var absenceCategoryRows = document.querySelectorAll('.absence-category-row');
+var metricItems         = document.querySelectorAll('.focus-metric-item');
+
+// Referencias a los 9 valores individuales (3 categorías × 3 niveles)
+var absenceVals = {
+  sinBajas:   { regular: document.getElementById('absence-val-sinBajas-regular'),
+                moderado: document.getElementById('absence-val-sinBajas-moderado'),
+                critico: document.getElementById('absence-val-sinBajas-critico') },
+  entre1y3:   { regular: document.getElementById('absence-val-entre1y3-regular'),
+                moderado: document.getElementById('absence-val-entre1y3-moderado'),
+                critico: document.getElementById('absence-val-entre1y3-critico') },
+  cuatroOMas: { regular: document.getElementById('absence-val-cuatroOMas-regular'),
+                moderado: document.getElementById('absence-val-cuatroOMas-moderado'),
+                critico: document.getElementById('absence-val-cuatroOMas-critico') }
+};
 
 // =============================================================================
 // 2. Variables de Control de Estado
@@ -76,18 +86,25 @@ function updateAbsencesBreakdownBlock() {
   var group = gradeData.groups.find(function(g) { return g.name === activeGroupName; });
   if (!group || !group.distribucionInasistencias) return;
 
-  var categoryLabel = "Sin asignaturas pendientes (Sin bajas)";
-  if (activeMetricSelected === "entre1y3")   categoryLabel = "Rendimiento medio (1 a 3 bajas)";
-  if (activeMetricSelected === "cuatroOMas") categoryLabel = "Rendimiento crítico (4 o más bajas)";
+  // Poblar los 9 valores (3 categorías × 3 niveles)
+  var categories = ['sinBajas', 'entre1y3', 'cuatroOMas'];
+  categories.forEach(function(cat) {
+    var dataFaltas = group.distribucionInasistencias[cat];
+    if (dataFaltas && absenceVals[cat]) {
+      absenceVals[cat].regular.textContent  = dataFaltas.regular  + " Alumn.";
+      absenceVals[cat].moderado.textContent = dataFaltas.moderado + " Alumn.";
+      absenceVals[cat].critico.textContent  = dataFaltas.critico  + " Alumn.";
+    }
+  });
 
-  absencesBoxTitle.textContent = "Niveles de Ausentismo en: " + categoryLabel;
-
-  var dataFaltas = group.distribucionInasistencias[activeMetricSelected];
-  if (dataFaltas) {
-    absenceValRegular.textContent  = dataFaltas.regular  + " Alumn.";
-    absenceValModerado.textContent = dataFaltas.moderado + " Alumn.";
-    absenceValCritico.textContent  = dataFaltas.critico  + " Alumn.";
-  }
+  // Resaltar la fila de la categoría seleccionada
+  absenceCategoryRows.forEach(function(row) {
+    if (row.getAttribute('data-category') === activeMetricSelected) {
+      row.classList.add('active-row');
+    } else {
+      row.classList.remove('active-row');
+    }
+  });
 }
 
 // =============================================================================

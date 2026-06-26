@@ -205,23 +205,76 @@
           </div>
         </div>
 
-        <!-- DESGLOSE DE AUSENTISMO DINÁMICO -->
+        <!-- DESGLOSE DE AUSENTISMO DINÁMICO — TODAS LAS CATEGORÍAS -->
         <div class="absences-breakdown-box">
-          <h4 id="absences-box-title">Niveles de Ausentismo en: Sin asignaturas pendientes (Sin bajas)</h4>
-          <div class="absences-grid">
-            <div class="absence-level-card" style="border-left: 3px solid var(--color-success);">
-              <span class="absence-level-label">Regular (0-5 faltas)</span>
-              <span class="absence-level-val" id="absence-val-regular">0 Alumn.</span>
+          <h4 id="absences-box-title">Niveles de Ausentismo del Grupo</h4>
+
+          <!-- Fila: Sin Bajas -->
+          <div class="absence-category-row active-row" data-category="sinBajas">
+            <div class="absence-category-label">
+              <span class="focus-metric-indicator indicator-success"></span>
+              <span>Sin Bajas</span>
             </div>
-            <div class="absence-level-card" style="border-left: 3px solid var(--color-warning);">
-              <span class="absence-level-label">Moderado (6-10 faltas)</span>
-              <span class="absence-level-val" id="absence-val-moderado">0 Alumn.</span>
-            </div>
-            <div class="absence-level-card critico-border" style="border-left: 3px solid var(--color-neon-pink);">
-              <span class="absence-level-label">Crítico (+10 faltas)</span>
-              <span class="absence-level-val" id="absence-val-critico" style="color: #ff479c;">0 Alumn.</span>
+            <div class="absences-grid">
+              <div class="absence-level-card" style="border-left: 3px solid var(--color-success);">
+                <span class="absence-level-label">Regular (0-5 faltas)</span>
+                <span class="absence-level-val" id="absence-val-sinBajas-regular">0 Alumn.</span>
+              </div>
+              <div class="absence-level-card" style="border-left: 3px solid var(--color-warning);">
+                <span class="absence-level-label">Moderado (6-10 faltas)</span>
+                <span class="absence-level-val" id="absence-val-sinBajas-moderado">0 Alumn.</span>
+              </div>
+              <div class="absence-level-card critico-border" style="border-left: 3px solid var(--color-neon-pink);">
+                <span class="absence-level-label">Crítico (+10 faltas)</span>
+                <span class="absence-level-val" id="absence-val-sinBajas-critico" style="color: #ff479c;">0 Alumn.</span>
+              </div>
             </div>
           </div>
+
+          <!-- Fila: 1-3 Bajas -->
+          <div class="absence-category-row" data-category="entre1y3">
+            <div class="absence-category-label">
+              <span class="focus-metric-indicator indicator-warning"></span>
+              <span>1-3 Bajas</span>
+            </div>
+            <div class="absences-grid">
+              <div class="absence-level-card" style="border-left: 3px solid var(--color-success);">
+                <span class="absence-level-label">Regular (0-5 faltas)</span>
+                <span class="absence-level-val" id="absence-val-entre1y3-regular">0 Alumn.</span>
+              </div>
+              <div class="absence-level-card" style="border-left: 3px solid var(--color-warning);">
+                <span class="absence-level-label">Moderado (6-10 faltas)</span>
+                <span class="absence-level-val" id="absence-val-entre1y3-moderado">0 Alumn.</span>
+              </div>
+              <div class="absence-level-card critico-border" style="border-left: 3px solid var(--color-neon-pink);">
+                <span class="absence-level-label">Crítico (+10 faltas)</span>
+                <span class="absence-level-val" id="absence-val-entre1y3-critico" style="color: #ff479c;">0 Alumn.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fila: 4+ Bajas -->
+          <div class="absence-category-row" data-category="cuatroOMas">
+            <div class="absence-category-label">
+              <span class="focus-metric-indicator indicator-danger"></span>
+              <span>4+ Bajas</span>
+            </div>
+            <div class="absences-grid">
+              <div class="absence-level-card" style="border-left: 3px solid var(--color-success);">
+                <span class="absence-level-label">Regular (0-5 faltas)</span>
+                <span class="absence-level-val" id="absence-val-cuatroOMas-regular">0 Alumn.</span>
+              </div>
+              <div class="absence-level-card" style="border-left: 3px solid var(--color-warning);">
+                <span class="absence-level-label">Moderado (6-10 faltas)</span>
+                <span class="absence-level-val" id="absence-val-cuatroOMas-moderado">0 Alumn.</span>
+              </div>
+              <div class="absence-level-card critico-border" style="border-left: 3px solid var(--color-neon-pink);">
+                <span class="absence-level-label">Crítico (+10 faltas)</span>
+                <span class="absence-level-val" id="absence-val-cuatroOMas-critico" style="color: #ff479c;">0 Alumn.</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </main>
 

@@ -698,6 +698,38 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.85rem;
+  flex: 1;
+}
+
+/* Filas de categoría de ausentismo */
+.absence-category-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.008);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.absence-category-row.active-row {
+  background: rgba(99, 102, 241, 0.06);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: inset 0 0 12px rgba(0, 242, 254, 0.06),
+              0 0 8px rgba(99, 102, 241, 0.08);
+}
+
+.absence-category-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .absence-level-card {
@@ -1258,6 +1290,25 @@ footer a:hover {
   .absence-level-val {
     color: #111827 !important;
     font-size: 1.1rem !important;
+  }
+  .absence-category-row {
+    border: 1px solid #e5e7eb !important;
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 0.5rem !important;
+  }
+  .absence-category-row.active-row {
+    background: #f0f4ff !important;
+    border-color: #93a3f8 !important;
+    box-shadow: none !important;
+  }
+  .absence-category-label {
+    color: #374151 !important;
+    font-size: 0.65rem !important;
+  }
+  .absence-category-label .focus-metric-indicator {
+    width: 8px !important;
+    height: 8px !important;
   }
 
   /* Nueva sección de insuficiencias en impresión */
