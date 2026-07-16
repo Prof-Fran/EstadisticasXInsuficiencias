@@ -9,9 +9,9 @@ var aprilData = {
     "groups": [
       {
         "name": "7°1",
-        "sinBajas": 11,
-        "entre1y3": 7,
-        "cuatroOMas": 5,
+        "sinBajas": 17,
+        "entre1y3": 5,
+        "cuatroOMas": 3,
         "insuficiencias": {
           "Biologia": 1,
           "Com Visual": 4,
