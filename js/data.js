@@ -607,18 +607,137 @@ var aprilData = {
 // 2. Función determinista para calcular inasistencias consistentes por grupo
 // =============================================================================
 function populateInasistencias(group) {
-  // Caso especial para 7°1 con datos fijos conocidos
-  if (group.name === "7°1" && group.sinBajas === 11 && group.entre1y3 === 7 && group.cuatroOMas === 5) {
+
+  // ===========================================================================
+  // DATOS REALES — 7° AÑO (Reunión de Abril)
+  // Columnas: sinBajas | entre1y3 (Rend. Medio) | cuatroOMas (Rend. Crítico)
+  // Filas:    regular (0-5 faltas) | moderado (6-10) | critico (>10)
+  // ===========================================================================
+
+  // 7°1
+  if (group.name === "7°1") {
     group.distribucionInasistencias = {
-      "sinBajas":   { "regular": 8, "moderado": 2, "critico": 1 },
-      "entre1y3":   { "regular": 3, "moderado": 3, "critico": 1 },
-      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
+      "sinBajas":   { "regular": 16, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 4,  "moderado": 1, "critico": 0 },
+      "cuatroOMas": { "regular": 1,  "moderado": 1, "critico": 1 }
     };
     return;
   }
 
-  // Caso especial para 9°5 (Reunión de Abril)
-  if (group.name === "9°5" && group.sinBajas === 3 && group.entre1y3 === 12 && group.cuatroOMas === 7) {
+  // 7°2
+  if (group.name === "7°2") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 11, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 5,  "moderado": 0, "critico": 0 },
+      "cuatroOMas": { "regular": 6,  "moderado": 0, "critico": 0 }
+    };
+    return;
+  }
+
+  // 7°3
+  if (group.name === "7°3") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 12, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 6,  "moderado": 1, "critico": 0 },
+      "cuatroOMas": { "regular": 0,  "moderado": 2, "critico": 1 }
+    };
+    return;
+  }
+
+  // 7°4
+  if (group.name === "7°4") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 10, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 9,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 2,  "moderado": 0, "critico": 1 }
+    };
+    return;
+  }
+
+  // ===========================================================================
+  // DATOS REALES — 8° AÑO (Reunión de Abril)
+  // ===========================================================================
+
+  // 8°5
+  if (group.name === "8°5") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 1, "moderado": 1, "critico": 1 },
+      "entre1y3":   { "regular": 2, "moderado": 7, "critico": 1 },
+      "cuatroOMas": { "regular": 4, "moderado": 2, "critico": 1 }
+    };
+    return;
+  }
+
+  // 8°6
+  if (group.name === "8°6") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 3, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 5, "moderado": 1, "critico": 0 },
+      "cuatroOMas": { "regular": 1, "moderado": 4, "critico": 3 }
+    };
+    return;
+  }
+
+  // 8°7
+  if (group.name === "8°7") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 3, "moderado": 2, "critico": 1 },
+      "entre1y3":   { "regular": 3, "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 1, "moderado": 0, "critico": 7 }
+    };
+    return;
+  }
+
+  // ===========================================================================
+  // DATOS REALES — 9° AÑO (Reunión de Abril)
+  // ===========================================================================
+
+  // 9°1
+  if (group.name === "9°1") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 3, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 8, "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 4, "moderado": 6, "critico": 1 }
+    };
+    return;
+  }
+
+  // 9°2
+  if (group.name === "9°2") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 5, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 9, "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 2, "moderado": 3, "critico": 2 }
+    };
+    return;
+  }
+
+  // 9°3
+  if (group.name === "9°3") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 7, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 3, "critico": 0 },
+      "cuatroOMas": { "regular": 4, "moderado": 5, "critico": 2 }
+    };
+    return;
+  }
+
+  // 9°4
+  if (group.name === "9°4") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 1, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 8, "moderado": 3, "critico": 1 },
+      "cuatroOMas": { "regular": 3, "moderado": 4, "critico": 3 }
+    };
+    return;
+  }
+
+  // ===========================================================================
+  // DATOS REALES — 9° AÑO VESPERTINOS (Reunión de Abril)
+  // ===========================================================================
+
+  // 9°5
+  if (group.name === "9°5") {
     group.distribucionInasistencias = {
       "sinBajas":   { "regular": 3, "moderado": 0, "critico": 0 },
       "entre1y3":   { "regular": 7, "moderado": 5, "critico": 0 },
@@ -627,8 +746,8 @@ function populateInasistencias(group) {
     return;
   }
 
-  // Caso especial para 9°6 (Reunión de Abril)
-  if (group.name === "9°6" && group.sinBajas === 3 && group.entre1y3 === 9 && group.cuatroOMas === 9) {
+  // 9°6
+  if (group.name === "9°6") {
     group.distribucionInasistencias = {
       "sinBajas":   { "regular": 1, "moderado": 2, "critico": 0 },
       "entre1y3":   { "regular": 3, "moderado": 3, "critico": 3 },
@@ -637,8 +756,8 @@ function populateInasistencias(group) {
     return;
   }
 
-  // Caso especial para 9°7 (Reunión de Abril)
-  if (group.name === "9°7" && group.sinBajas === 4 && group.entre1y3 === 12 && group.cuatroOMas === 6) {
+  // 9°7
+  if (group.name === "9°7") {
     group.distribucionInasistencias = {
       "sinBajas":   { "regular": 3, "moderado": 1, "critico": 0 },
       "entre1y3":   { "regular": 6, "moderado": 3, "critico": 3 },
@@ -647,6 +766,9 @@ function populateInasistencias(group) {
     return;
   }
 
+  // ===========================================================================
+  // FALLBACK — Grupos sin datos reales: cálculo estimado por fórmula
+  // ===========================================================================
   var sbCritico  = group.sinBajas > 12 ? 1 : 0;
   var sbModerado = Math.min(group.sinBajas - sbCritico, Math.round(group.sinBajas * 0.15));
   var sbRegular  = group.sinBajas - sbCritico - sbModerado;
