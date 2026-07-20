@@ -637,8 +637,8 @@ function populateInasistencias(group) {
   // 7°3
   if (group.name === "7°3") {
     group.distribucionInasistencias = {
-      "sinBajas":   { "regular": 12, "moderado": 1, "critico": 0 },
-      "entre1y3":   { "regular": 6,  "moderado": 1, "critico": 0 },
+      "sinBajas":   { "regular": 12, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 7,  "moderado": 1, "critico": 0 },
       "cuatroOMas": { "regular": 0,  "moderado": 2, "critico": 1 }
     };
     return;
@@ -658,11 +658,51 @@ function populateInasistencias(group) {
   // DATOS REALES — 8° AÑO (Reunión de Abril)
   // ===========================================================================
 
+  // 8°1
+  if (group.name === "8°1") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 10, "moderado": 3, "critico": 0 },
+      "entre1y3":   { "regular": 4,  "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 1,  "moderado": 1, "critico": 1 }
+    };
+    return;
+  }
+
+  // 8°2
+  if (group.name === "8°2") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 8, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 8, "moderado": 1, "critico": 0 },
+      "cuatroOMas": { "regular": 1, "moderado": 0, "critico": 5 }
+    };
+    return;
+  }
+
+  // 8°3
+  if (group.name === "8°3") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 9, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 6, "moderado": 0, "critico": 0 },
+      "cuatroOMas": { "regular": 0, "moderado": 4, "critico": 5 }
+    };
+    return;
+  }
+
+  // 8°4
+  if (group.name === "8°4") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 9, "moderado": 3, "critico": 0 },
+      "entre1y3":   { "regular": 3, "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 1, "moderado": 1, "critico": 3 }
+    };
+    return;
+  }
+
   // 8°5
   if (group.name === "8°5") {
     group.distribucionInasistencias = {
-      "sinBajas":   { "regular": 1, "moderado": 1, "critico": 1 },
-      "entre1y3":   { "regular": 2, "moderado": 7, "critico": 1 },
+      "sinBajas":   { "regular": 1, "moderado": 2, "critico": 1 },
+      "entre1y3":   { "regular": 2, "moderado": 6, "critico": 1 },
       "cuatroOMas": { "regular": 4, "moderado": 2, "critico": 1 }
     };
     return;
@@ -681,9 +721,9 @@ function populateInasistencias(group) {
   // 8°7
   if (group.name === "8°7") {
     group.distribucionInasistencias = {
-      "sinBajas":   { "regular": 3, "moderado": 2, "critico": 1 },
+      "sinBajas":   { "regular": 3, "moderado": 2, "critico": 0 },
       "entre1y3":   { "regular": 3, "moderado": 2, "critico": 0 },
-      "cuatroOMas": { "regular": 1, "moderado": 0, "critico": 7 }
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 9 }
     };
     return;
   }
@@ -695,9 +735,9 @@ function populateInasistencias(group) {
   // 9°1
   if (group.name === "9°1") {
     group.distribucionInasistencias = {
-      "sinBajas":   { "regular": 3, "moderado": 0, "critico": 0 },
-      "entre1y3":   { "regular": 8, "moderado": 2, "critico": 0 },
-      "cuatroOMas": { "regular": 4, "moderado": 6, "critico": 1 }
+      "sinBajas":   { "regular": 4, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 6, "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 4, "moderado": 6, "critico": 2 }
     };
     return;
   }
@@ -706,8 +746,8 @@ function populateInasistencias(group) {
   if (group.name === "9°2") {
     group.distribucionInasistencias = {
       "sinBajas":   { "regular": 5, "moderado": 1, "critico": 0 },
-      "entre1y3":   { "regular": 9, "moderado": 2, "critico": 0 },
-      "cuatroOMas": { "regular": 2, "moderado": 3, "critico": 2 }
+      "entre1y3":   { "regular": 8, "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 2, "moderado": 3, "critico": 3 }
     };
     return;
   }
@@ -715,8 +755,8 @@ function populateInasistencias(group) {
   // 9°3
   if (group.name === "9°3") {
     group.distribucionInasistencias = {
-      "sinBajas":   { "regular": 7, "moderado": 0, "critico": 0 },
-      "entre1y3":   { "regular": 4, "moderado": 3, "critico": 0 },
+      "sinBajas":   { "regular": 6, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 4, "critico": 0 },
       "cuatroOMas": { "regular": 4, "moderado": 5, "critico": 2 }
     };
     return;
