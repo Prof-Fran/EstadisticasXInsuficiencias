@@ -476,9 +476,9 @@ var aprilData = {
       },
       {
         "name": "1° EMS 2",
-        "sinBajas": 19,
-        "entre1y3": 9,
-        "cuatroOMas": 7,
+        "sinBajas": 10,
+        "entre1y3": 7,
+        "cuatroOMas": 2,
         "insuficiencias": {
           "Atronomia": 3,
           "Biologia": 7,
@@ -501,9 +501,9 @@ var aprilData = {
       },
       {
         "name": "1°EMS 3",
-        "sinBajas": 20,
-        "entre1y3": 13,
-        "cuatroOMas": 8,
+        "sinBajas": 8,
+        "entre1y3": 8,
+        "cuatroOMas": 7,
         "insuficiencias": {
           "Atronomia": 7,
           "Biologia": 5,
@@ -650,6 +650,36 @@ function populateInasistencias(group) {
       "sinBajas":   { "regular": 10, "moderado": 1, "critico": 0 },
       "entre1y3":   { "regular": 9,  "moderado": 1, "critico": 1 },
       "cuatroOMas": { "regular": 2,  "moderado": 0, "critico": 1 }
+    };
+    return;
+  }
+
+  // 7°5
+  if (group.name === "7°5") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 11, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 5,  "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 3,  "moderado": 1, "critico": 2 }
+    };
+    return;
+  }
+
+  // 7°6
+  if (group.name === "7°6") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 11, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 1,  "moderado": 2, "critico": 0 },
+      "cuatroOMas": { "regular": 4,  "moderado": 2, "critico": 4 }
+    };
+    return;
+  }
+
+  // 7°7
+  if (group.name === "7°7") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 11, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 6,  "moderado": 1, "critico": 0 },
+      "cuatroOMas": { "regular": 2,  "moderado": 2, "critico": 1 }
     };
     return;
   }
@@ -802,6 +832,42 @@ function populateInasistencias(group) {
       "sinBajas":   { "regular": 3, "moderado": 1, "critico": 0 },
       "entre1y3":   { "regular": 6, "moderado": 3, "critico": 3 },
       "cuatroOMas": { "regular": 1, "moderado": 0, "critico": 5 }
+    };
+    return;
+  }
+
+  // ===========================================================================
+  // DATOS REALES — 1° EMS (Reunión de Abril)
+  // Columnas: sinBajas | entre1y3 (Rend. Medio) | cuatroOMas (Rend. Crítico)
+  // Filas:    regular (0-5 faltas) | moderado (6-10) | critico (>10)
+  // ===========================================================================
+
+  // 1°EMS 1
+  if (group.name === "1°EMS 1") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 1, "moderado": 4, "critico": 3 },
+      "entre1y3":   { "regular": 1, "moderado": 3, "critico": 3 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 7 }
+    };
+    return;
+  }
+
+  // 1° EMS 2
+  if (group.name === "1° EMS 2") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 1, "moderado": 5, "critico": 4 },
+      "entre1y3":   { "regular": 0, "moderado": 1, "critico": 6 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 2 }
+    };
+    return;
+  }
+
+  // 1°EMS 3
+  if (group.name === "1°EMS 3") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 0, "moderado": 0, "critico": 8 },
+      "entre1y3":   { "regular": 0, "moderado": 0, "critico": 8 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 7 }
     };
     return;
   }
