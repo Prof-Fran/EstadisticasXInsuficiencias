@@ -526,7 +526,7 @@ var aprilData = {
       },
       {
         "name": "1°EMS 4",
-        "sinBajas": 21,
+        "sinBajas": 15,
         "entre1y3": 5,
         "cuatroOMas": 5,
         "insuficiencias": {
@@ -551,7 +551,7 @@ var aprilData = {
       },
       {
         "name": "1°EMS 5",
-        "sinBajas": 10,
+        "sinBajas": 7,
         "entre1y3": 7,
         "cuatroOMas": 9,
         "insuficiencias": {
@@ -576,9 +576,9 @@ var aprilData = {
       },
       {
         "name": "1°EMS 6",
-        "sinBajas": 17,
-        "entre1y3": 10,
-        "cuatroOMas": 14,
+        "sinBajas": 11,
+        "entre1y3": 12,
+        "cuatroOMas": 15,
         "insuficiencias": {
           "Atronomia": 0,
           "Biologia": 9,
@@ -868,6 +868,36 @@ function populateInasistencias(group) {
       "sinBajas":   { "regular": 0, "moderado": 0, "critico": 8 },
       "entre1y3":   { "regular": 0, "moderado": 0, "critico": 8 },
       "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 7 }
+    };
+    return;
+  }
+
+  // 1°EMS 4
+  if (group.name === "1°EMS 4") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 13, "moderado": 1, "critico": 1 },
+      "entre1y3":   { "regular": 4,  "moderado": 1, "critico": 0 },
+      "cuatroOMas": { "regular": 1,  "moderado": 1, "critico": 3 }
+    };
+    return;
+  }
+
+  // 1°EMS 5
+  if (group.name === "1°EMS 5") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 6,  "moderado": 0, "critico": 1 },
+      "entre1y3":   { "regular": 4,  "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 4,  "moderado": 2, "critico": 3 }
+    };
+    return;
+  }
+
+  // 1°EMS 6
+  if (group.name === "1°EMS 6") {
+    group.distribucionInasistencias = {
+      "sinBajas":   { "regular": 10, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 10, "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 4,  "moderado": 3, "critico": 8 }
     };
     return;
   }
