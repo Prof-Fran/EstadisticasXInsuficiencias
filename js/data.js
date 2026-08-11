@@ -608,6 +608,9 @@ var aprilData = {
 // =============================================================================
 function populateInasistencias(group) {
 
+  // Si el grupo ya tiene distribucionInasistencias cargada con datos reales, no sobreescribir
+  if (group.distribucionInasistencias) return;
+
   // ===========================================================================
   // DATOS REALES — 7° AÑO (Reunión de Abril)
   // Columnas: sinBajas | entre1y3 (Rend. Medio) | cuatroOMas (Rend. Crítico)
@@ -963,6 +966,197 @@ function generateMockData(baseData, multiplierSinBajas, multiplierCriticos) {
 }
 
 // =============================================================================
+// 3b. Función auxiliar para sobreescribir grupos reales dentro de datos simulados
+// =============================================================================
+function mergeRealGroups(simulatedData, realGroups, gradeKey) {
+  var cloned = JSON.parse(JSON.stringify(simulatedData));
+  if (!cloned[gradeKey]) return cloned;
+  realGroups.forEach(function(realGroup) {
+    var idx = cloned[gradeKey].groups.findIndex(function(g) { return g.name === realGroup.name; });
+    if (idx !== -1) {
+      cloned[gradeKey].groups[idx] = JSON.parse(JSON.stringify(realGroup));
+    }
+  });
+  return cloned;
+}
+
+// =============================================================================
+// 3c. Datos Reales — 2° Reunión (Agosto) — 1° EMS
+// Nota: datos de inasistencias pendientes de carga, se completarán en próxima reunión
+// =============================================================================
+var augustEmsGroups = [
+  {
+    "name": "1°EMS 1",
+    "sinBajas": 15,
+    "entre1y3": 8,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Atronomia": 0,
+      "Biologia": 1,
+      "Com. Visual": 3,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 0,
+      "Filosofia": 2,
+      "Arg y debate": 0,
+      "Fisica": 3,
+      "Geografia": 0,
+      "Historia": 3,
+      "Patrimonio": 0,
+      "Ingles": 4,
+      "Literatura": 11,
+      "Matemáticas": 9,
+      "Quimica": 6
+    }
+  },
+  {
+    "name": "1° EMS 2",
+    "sinBajas": 24,
+    "entre1y3": 7,
+    "cuatroOMas": 4,
+    "insuficiencias": {
+      "Atronomia": 1,
+      "Biologia": 2,
+      "Com. Visual": 4,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 0,
+      "Filosofia": 5,
+      "Arg y debate": 0,
+      "Fisica": 8,
+      "Geografia": 0,
+      "Historia": 4,
+      "Patrimonio": 0,
+      "Ingles": 4,
+      "Literatura": 6,
+      "Matemáticas": 10,
+      "Quimica": 5
+    }
+  },
+  {
+    "name": "1°EMS 3",
+    "sinBajas": 29,
+    "entre1y3": 8,
+    "cuatroOMas": 4,
+    "insuficiencias": {
+      "Atronomia": 1,
+      "Biologia": 2,
+      "Com. Visual": 4,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 0,
+      "Filosofia": 5,
+      "Arg y debate": 0,
+      "Fisica": 7,
+      "Geografia": 0,
+      "Historia": 4,
+      "Patrimonio": 0,
+      "Ingles": 3,
+      "Literatura": 8,
+      "Matemáticas": 9,
+      "Quimica": 5
+    }
+  },
+  {
+    "name": "1°EMS 4",
+    "sinBajas": 15,
+    "entre1y3": 3,
+    "cuatroOMas": 1,
+    "insuficiencias": {
+      "Atronomia": 1,
+      "Biologia": 3,
+      "Com. Visual": 2,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 0,
+      "Filosofia": 0,
+      "Arg y debate": 0,
+      "Fisica": 3,
+      "Geografia": 0,
+      "Historia": 2,
+      "Patrimonio": 0,
+      "Ingles": 1,
+      "Literatura": 2,
+      "Matemáticas": 6,
+      "Quimica": 2
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 7, "moderado": 7, "critico": 1 },
+      "entre1y3":   { "regular": 0, "moderado": 3, "critico": 0 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 1 }
+    }
+  },
+  {
+    "name": "1°EMS 5",
+    "sinBajas": 7,
+    "entre1y3": 9,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Atronomia": 5,
+      "Biologia": 7,
+      "Com. Visual": 4,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 6,
+      "Ed Musical": 0,
+      "Part Juvenil": 1,
+      "Filosofia": 6,
+      "Arg y debate": 0,
+      "Fisica": 10,
+      "Geografia": 0,
+      "Historia": 5,
+      "Patrimonio": 0,
+      "Ingles": 6,
+      "Literatura": 6,
+      "Matemáticas": 8,
+      "Quimica": 14
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 2, "moderado": 4, "critico": 1 },
+      "entre1y3":   { "regular": 0, "moderado": 4, "critico": 5 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 5 }
+    }
+  },
+  {
+    "name": "1°EMS 6",
+    "sinBajas": 9,
+    "entre1y3": 6,
+    "cuatroOMas": 4,
+    "insuficiencias": {
+      "Atronomia": 3,
+      "Biologia": 10,
+      "Com. Visual": 4,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 7,
+      "Ed Musical": 0,
+      "Part Juvenil": 3,
+      "Filosofia": 3,
+      "Arg y debate": 0,
+      "Fisica": 10,
+      "Geografia": 0,
+      "Historia": 8,
+      "Patrimonio": 0,
+      "Ingles": 7,
+      "Literatura": 8,
+      "Matemáticas": 12,
+      "Quimica": 17
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 5, "moderado": 1, "critico": 3 },
+      "entre1y3":   { "regular": 1, "moderado": 2, "critico": 3 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 4 }
+    }
+  }
+];
+
+// Inicializar inasistencias (distribucionInasistencias) para los grupos de agosto EMS.
+// Los grupos con datos reales ya los tienen definidos; el resto usará el fallback estimado.
+augustEmsGroups.forEach(populateInasistencias);
+
+// =============================================================================
 // 4. Estructura de Reuniones (meetingsData) — fuente de verdad del dashboard
 // =============================================================================
 var meetingsData = {
@@ -978,7 +1172,7 @@ var meetingsData = {
     "badge": "Reuniones Docentes - Agosto 2026",
     "subtitle": "Seguimiento intermedio del desempeño académico y evolución de insuficiencias por grupo en el segundo período escolar.",
     "printSubtitle": "Reuniones de Evaluación Docente • Datos de Seguimiento de Agosto 2026",
-    "data": generateMockData(aprilData, 1.15, 0.8)
+    "data": mergeRealGroups(generateMockData(aprilData, 1.15, 0.8), augustEmsGroups, "EMS")
   },
   "octubre": {
     "title": "3° Reunión (Octubre)",
