@@ -1077,6 +1077,11 @@ var august7Groups = [
       "Matematicas": 4,
       "Informática": 8,
       "Cs. Fis/Quim": 2
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 9, "moderado": 0, "critico": 2 },
+      "entre1y3":   { "regular": 0, "moderado": 1, "critico": 6 },
+      "cuatroOMas": { "regular": 0, "moderado": 4, "critico": 2 }
     }
   },
   {
@@ -1096,6 +1101,11 @@ var august7Groups = [
       "Matematicas": 5,
       "Informática": 6,
       "Cs. Fis/Quim": 3
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 8, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 2, "moderado": 3, "critico": 0 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 6 }
     }
   },
   {
@@ -1115,13 +1125,14 @@ var august7Groups = [
       "Matematicas": 4,
       "Informática": 7,
       "Cs. Fis/Quim": 3
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 8, "moderado": 7, "critico": 1 },
+      "entre1y3":   { "regular": 2, "moderado": 0, "critico": 0 },
+      "cuatroOMas": { "regular": 1, "moderado": 0, "critico": 4 }
     }
   }
 ];
-augustr7Groups = august7Groups; // alias para compatibilidad
-augusr7Groups = august7Groups;  // alias
-augusr7Groups = august7Groups;  // alias
-augusr7Groups = august7Groups;  // alias
 august7Groups.forEach(populateInasistencias);
 
 // =============================================================================
@@ -1226,6 +1237,11 @@ var august8Groups = [
       "Matematicas": 12,
       "Informática": 7,
       "Cs. Fis/Quim": 1
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 1, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 1, "moderado": 0, "critico": 8 },
+      "cuatroOMas": { "regular": 1, "moderado": 1, "critico": 8 }
     }
   },
   {
@@ -1246,6 +1262,11 @@ var august8Groups = [
       "Matematicas": 7,
       "Informática": 0,
       "Cs. Fis/Quim": 9
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 6, "moderado": 0, "critico": 1 },
+      "entre1y3":   { "regular": 0, "moderado": 0, "critico": 5 },
+      "cuatroOMas": { "regular": 0, "moderado": 2, "critico": 5 }
     }
   },
   {
@@ -1266,6 +1287,11 @@ var august8Groups = [
       "Matematicas": 10,
       "Informática": 1,
       "Cs. Fis/Quim": 9
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 2, "moderado": 3, "critico": 2 },
+      "entre1y3":   { "regular": 0, "moderado": 3, "critico": 0 },
+      "cuatroOMas": { "regular": 0, "moderado": 3, "critico": 7 }
     }
   }
 ];
@@ -1383,6 +1409,11 @@ var august9Groups = [
       "Matemática": 6,
       "Quimica": 5,
       "Informatica": 7
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 2, "moderado": 5, "critico": 6 },
+      "entre1y3":   { "regular": 0, "moderado": 0, "critico": 3 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 6 }
     }
   },
   {
@@ -1405,6 +1436,11 @@ var august9Groups = [
       "Matemática": 14,
       "Quimica": 12,
       "Informatica": 12
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 0, "moderado": 0, "critico": 4 },
+      "entre1y3":   { "regular": 0, "moderado": 0, "critico": 2 },
+      "cuatroOMas": { "regular": 1, "moderado": 4, "critico": 10 }
     }
   },
   {
@@ -1427,6 +1463,11 @@ var august9Groups = [
       "Matemática": 1,
       "Quimica": 6,
       "Informatica": 8
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 2, "moderado": 3, "critico": 2 },
+      "entre1y3":   { "regular": 0, "moderado": 0, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 11 }
     }
   }
 ];
