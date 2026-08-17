@@ -981,8 +981,459 @@ function mergeRealGroups(simulatedData, realGroups, gradeKey) {
 }
 
 // =============================================================================
-// 3c. Datos Reales — 2° Reunión (Agosto) — 1° EMS
-// Nota: datos de inasistencias pendientes de carga, se completarán en próxima reunión
+// 3c. Datos Reales — 2° Reunión (Agosto) — 7° Año
+// =============================================================================
+var august7Groups = [
+  {
+    "name": "7°1",
+    "sinBajas": 21,
+    "entre1y3": 2,
+    "cuatroOMas": 2,
+    "insuficiencias": {
+      "Biologia": 2,
+      "Com Visual": 3,
+      "Ed Fisica": 0,
+      "Ed Musical": 1,
+      "Geografia": 2,
+      "Historia": 2,
+      "Id Esp": 2,
+      "Ingles": 0,
+      "Matematicas": 3,
+      "Informática": 4,
+      "Cs. Fis/Quim": 1
+    }
+  },
+  {
+    "name": "7°2",
+    "sinBajas": 14,
+    "entre1y3": 5,
+    "cuatroOMas": 3,
+    "insuficiencias": {
+      "Biologia": 0,
+      "Com Visual": 8,
+      "Ed Fisica": 0,
+      "Ed Musical": 2,
+      "Geografia": 3,
+      "Historia": 3,
+      "Id Esp": 4,
+      "Ingles": 1,
+      "Matematicas": 3,
+      "Informática": 4,
+      "Cs. Fis/Quim": 1
+    }
+  },
+  {
+    "name": "7°3",
+    "sinBajas": 17,
+    "entre1y3": 4,
+    "cuatroOMas": 2,
+    "insuficiencias": {
+      "Biologia": 1,
+      "Com Visual": 3,
+      "Ed Fisica": 1,
+      "Ed Musical": 0,
+      "Geografia": 3,
+      "Historia": 3,
+      "Id Esp": 2,
+      "Ingles": 3,
+      "Matematicas": 2,
+      "Informática": 3,
+      "Cs. Fis/Quim": 0
+    }
+  },
+  {
+    "name": "7°4",
+    "sinBajas": 16,
+    "entre1y3": 5,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 3,
+      "Com Visual": 3,
+      "Ed Fisica": 1,
+      "Ed Musical": 0,
+      "Geografia": 5,
+      "Historia": 5,
+      "Id Esp": 3,
+      "Ingles": 5,
+      "Matematicas": 9,
+      "Informática": 3,
+      "Cs. Fis/Quim": 0
+    }
+  },
+  {
+    "name": "7°5",
+    "sinBajas": 11,
+    "entre1y3": 7,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 7,
+      "Com Visual": 10,
+      "Ed Fisica": 0,
+      "Ed Musical": 5,
+      "Geografia": 2,
+      "Historia": 2,
+      "Id Esp": 4,
+      "Ingles": 5,
+      "Matematicas": 4,
+      "Informática": 8,
+      "Cs. Fis/Quim": 2
+    }
+  },
+  {
+    "name": "7°6",
+    "sinBajas": 12,
+    "entre1y3": 5,
+    "cuatroOMas": 7,
+    "insuficiencias": {
+      "Biologia": 7,
+      "Com Visual": 10,
+      "Ed Fisica": 1,
+      "Ed Musical": 3,
+      "Geografia": 4,
+      "Historia": 4,
+      "Id Esp": 6,
+      "Ingles": 5,
+      "Matematicas": 5,
+      "Informática": 6,
+      "Cs. Fis/Quim": 3
+    }
+  },
+  {
+    "name": "7°7",
+    "sinBajas": 16,
+    "entre1y3": 2,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 5,
+      "Ed Fisica": 2,
+      "Ed Musical": 3,
+      "Geografia": 1,
+      "Historia": 1,
+      "Id Esp": 5,
+      "Ingles": 3,
+      "Matematicas": 4,
+      "Informática": 7,
+      "Cs. Fis/Quim": 3
+    }
+  }
+];
+augustr7Groups = august7Groups; // alias para compatibilidad
+augusr7Groups = august7Groups;  // alias
+augusr7Groups = august7Groups;  // alias
+augusr7Groups = august7Groups;  // alias
+august7Groups.forEach(populateInasistencias);
+
+// =============================================================================
+// 3d. Datos Reales — 2° Reunión (Agosto) — 8° Año
+// =============================================================================
+var august8Groups = [
+  {
+    "name": "8°1",
+    "sinBajas": 16,
+    "entre1y3": 3,
+    "cuatroOMas": 4,
+    "insuficiencias": {
+      "Biologia": 4,
+      "Com Visual": 1,
+      "Ed Fisica": 0,
+      "Ed Musical": 3,
+      "Ciudadana": 4,
+      "Geografia": 3,
+      "Historia": 2,
+      "Id Esp": 2,
+      "Ingles": 6,
+      "Matematicas": 4,
+      "Informática": 3,
+      "Cs. Fis/Quim": 4
+    }
+  },
+  {
+    "name": "8°2",
+    "sinBajas": 12,
+    "entre1y3": 6,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 4,
+      "Ed Fisica": 0,
+      "Ed Musical": 3,
+      "Ciudadana": 3,
+      "Geografia": 3,
+      "Historia": 3,
+      "Id Esp": 3,
+      "Ingles": 6,
+      "Matematicas": 7,
+      "Informática": 6,
+      "Cs. Fis/Quim": 7
+    }
+  },
+  {
+    "name": "8°3",
+    "sinBajas": 11,
+    "entre1y3": 4,
+    "cuatroOMas": 8,
+    "insuficiencias": {
+      "Biologia": 9,
+      "Com Visual": 5,
+      "Ed Fisica": 4,
+      "Ed Musical": 2,
+      "Ciudadana": 3,
+      "Geografia": 5,
+      "Historia": 4,
+      "Id Esp": 11,
+      "Ingles": 7,
+      "Matematicas": 8,
+      "Informática": 0,
+      "Cs. Fis/Quim": 9
+    }
+  },
+  {
+    "name": "8°4",
+    "sinBajas": 8,
+    "entre1y3": 8,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 7,
+      "Ed Fisica": 2,
+      "Ed Musical": 4,
+      "Ciudadana": 2,
+      "Geografia": 3,
+      "Historia": 4,
+      "Id Esp": 13,
+      "Ingles": 10,
+      "Matematicas": 10,
+      "Informática": 4,
+      "Cs. Fis/Quim": 4
+    }
+  },
+  {
+    "name": "8°5",
+    "sinBajas": 2,
+    "entre1y3": 8,
+    "cuatroOMas": 10,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 3,
+      "Ed Fisica": 6,
+      "Ed Musical": 10,
+      "Ciudadana": 5,
+      "Geografia": 4,
+      "Historia": 4,
+      "Id Esp": 6,
+      "Ingles": 13,
+      "Matematicas": 12,
+      "Informática": 7,
+      "Cs. Fis/Quim": 1
+    }
+  },
+  {
+    "name": "8°6",
+    "sinBajas": 7,
+    "entre1y3": 5,
+    "cuatroOMas": 7,
+    "insuficiencias": {
+      "Biologia": 4,
+      "Com Visual": 7,
+      "Ed Fisica": 0,
+      "Ed Musical": 3,
+      "Ciudadana": 2,
+      "Geografia": 3,
+      "Historia": 6,
+      "Id Esp": 5,
+      "Ingles": 1,
+      "Matematicas": 7,
+      "Informática": 0,
+      "Cs. Fis/Quim": 9
+    }
+  },
+  {
+    "name": "8°7",
+    "sinBajas": 7,
+    "entre1y3": 3,
+    "cuatroOMas": 9,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 12,
+      "Ed Fisica": 0,
+      "Ed Musical": 9,
+      "Ciudadana": 4,
+      "Geografia": 6,
+      "Historia": 2,
+      "Id Esp": 7,
+      "Ingles": 0,
+      "Matematicas": 10,
+      "Informática": 1,
+      "Cs. Fis/Quim": 9
+    }
+  }
+];
+august8Groups.forEach(populateInasistencias);
+
+// =============================================================================
+// 3e. Datos Reales — 2° Reunión (Agosto) — 9° Año
+// =============================================================================
+var august9Groups = [
+  {
+    "name": "9°1",
+    "sinBajas": 7,
+    "entre1y3": 1,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 2,
+      "Com Visual": 1,
+      "Ed Fisica": 1,
+      "Ed Musical": 0,
+      "Ciudadana": 0,
+      "Fisica": 8,
+      "Geografia": 4,
+      "Historia": 1,
+      "Id Español": 3,
+      "Ingles": 2,
+      "Literatura": 17,
+      "Matemática": 5,
+      "Quimica": 5,
+      "Informatica": 9
+    }
+  },
+  {
+    "name": "9°2",
+    "sinBajas": 9,
+    "entre1y3": 8,
+    "cuatroOMas": 8,
+    "insuficiencias": {
+      "Biologia": 7,
+      "Com Visual": 2,
+      "Ed Fisica": 2,
+      "Ed Musical": 3,
+      "Ciudadana": 5,
+      "Fisica": 7,
+      "Geografia": 6,
+      "Historia": 3,
+      "Id Español": 5,
+      "Ingles": 4,
+      "Literatura": 13,
+      "Matemática": 5,
+      "Quimica": 7,
+      "Informatica": 12
+    }
+  },
+  {
+    "name": "9°3",
+    "sinBajas": 13,
+    "entre1y3": 4,
+    "cuatroOMas": 9,
+    "insuficiencias": {
+      "Biologia": 7,
+      "Com Visual": 0,
+      "Ed Fisica": 2,
+      "Ed Musical": 0,
+      "Ciudadana": 5,
+      "Fisica": 7,
+      "Geografia": 7,
+      "Historia": 3,
+      "Id Español": 2,
+      "Ingles": 2,
+      "Literatura": 8,
+      "Matemática": 8,
+      "Quimica": 5,
+      "Informatica": 9
+    }
+  },
+  {
+    "name": "9°4",
+    "sinBajas": 8,
+    "entre1y3": 8,
+    "cuatroOMas": 7,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 1,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Ciudadana": 1,
+      "Fisica": 7,
+      "Geografia": 0,
+      "Historia": 1,
+      "Id Español": 7,
+      "Ingles": 1,
+      "Literatura": 10,
+      "Matemática": 6,
+      "Quimica": 3,
+      "Informatica": 5
+    }
+  },
+  {
+    "name": "9°5",
+    "sinBajas": 10,
+    "entre1y3": 4,
+    "cuatroOMas": 8,
+    "insuficiencias": {
+      "Biologia": 2,
+      "Com Visual": 2,
+      "Ed Fisica": 6,
+      "Ed Musical": 0,
+      "Ciudadana": 6,
+      "Fisica": 8,
+      "Geografia": 3,
+      "Historia": 1,
+      "Id Español": 6,
+      "Ingles": 1,
+      "Literatura": 5,
+      "Matemática": 6,
+      "Quimica": 5,
+      "Informatica": 7
+    }
+  },
+  {
+    "name": "9°6",
+    "sinBajas": 4,
+    "entre1y3": 1,
+    "cuatroOMas": 16,
+    "insuficiencias": {
+      "Biologia": 15,
+      "Com Visual": 2,
+      "Ed Fisica": 8,
+      "Ed Musical": 6,
+      "Ciudadana": 12,
+      "Fisica": 10,
+      "Geografia": 8,
+      "Historia": 12,
+      "Id Español": 14,
+      "Ingles": 1,
+      "Literatura": 10,
+      "Matemática": 14,
+      "Quimica": 12,
+      "Informatica": 12
+    }
+  },
+  {
+    "name": "9°7",
+    "sinBajas": 6,
+    "entre1y3": 3,
+    "cuatroOMas": 12,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 0,
+      "Ed Fisica": 8,
+      "Ed Musical": 2,
+      "Ciudadana": 4,
+      "Fisica": 9,
+      "Geografia": 1,
+      "Historia": 5,
+      "Id Español": 13,
+      "Ingles": 0,
+      "Literatura": 3,
+      "Matemática": 1,
+      "Quimica": 6,
+      "Informatica": 8
+    }
+  }
+];
+august9Groups.forEach(populateInasistencias);
+
+// =============================================================================
+// 3f. Datos Reales — 2° Reunión (Agosto) — 1° EMS
 // =============================================================================
 var augustEmsGroups = [
   {
@@ -1172,7 +1623,14 @@ var meetingsData = {
     "badge": "Reuniones Docentes - Agosto 2026",
     "subtitle": "Seguimiento intermedio del desempeño académico y evolución de insuficiencias por grupo en el segundo período escolar.",
     "printSubtitle": "Reuniones de Evaluación Docente • Datos de Seguimiento de Agosto 2026",
-    "data": mergeRealGroups(generateMockData(aprilData, 1.15, 0.8), augustEmsGroups, "EMS")
+    "data": (function() {
+      var d = generateMockData(aprilData, 1.15, 0.8);
+      d = mergeRealGroups(d, august7Groups,  "7");
+      d = mergeRealGroups(d, august8Groups,  "8");
+      d = mergeRealGroups(d, august9Groups,  "9");
+      d = mergeRealGroups(d, augustEmsGroups, "EMS");
+      return d;
+    })()
   },
   "octubre": {
     "title": "3° Reunión (Octubre)",
