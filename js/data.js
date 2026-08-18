@@ -1001,6 +1001,11 @@ var august7Groups = [
       "Matematicas": 3,
       "Informática": 4,
       "Cs. Fis/Quim": 1
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 12, "moderado": 3, "critico": 6 },
+      "entre1y3":   { "regular": 0,  "moderado": 0, "critico": 2 },
+      "cuatroOMas": { "regular": 0,  "moderado": 0, "critico": 2 }
     }
   },
   {
@@ -1020,6 +1025,11 @@ var august7Groups = [
       "Matematicas": 3,
       "Informática": 4,
       "Cs. Fis/Quim": 1
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 9, "moderado": 2, "critico": 3 },
+      "entre1y3":   { "regular": 2, "moderado": 0, "critico": 3 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 3 }
     }
   },
   {
@@ -1039,6 +1049,11 @@ var august7Groups = [
       "Matematicas": 2,
       "Informática": 3,
       "Cs. Fis/Quim": 0
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 10, "moderado": 6, "critico": 1 },
+      "entre1y3":   { "regular": 0,  "moderado": 2, "critico": 2 },
+      "cuatroOMas": { "regular": 0,  "moderado": 0, "critico": 2 }
     }
   },
   {
@@ -1058,6 +1073,11 @@ var august7Groups = [
       "Matematicas": 9,
       "Informática": 3,
       "Cs. Fis/Quim": 0
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 11, "moderado": 4, "critico": 1 },
+      "entre1y3":   { "regular": 1,  "moderado": 2, "critico": 2 },
+      "cuatroOMas": { "regular": 0,  "moderado": 0, "critico": 5 }
     }
   },
   {
