@@ -1539,9 +1539,9 @@ august9Groups.forEach(populateInasistencias);
 var augustEmsGroups = [
   {
     "name": "1°EMS 1",
-    "sinBajas": 15,
-    "entre1y3": 8,
-    "cuatroOMas": 5,
+    "sinBajas": 9,
+    "entre1y3": 9,
+    "cuatroOMas": 4,
     "insuficiencias": {
       "Atronomia": 0,
       "Biologia": 1,
@@ -1560,13 +1560,18 @@ var augustEmsGroups = [
       "Literatura": 11,
       "Matemáticas": 9,
       "Quimica": 6
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 2, "moderado": 4, "critico": 3 },
+      "entre1y3":   { "regular": 0, "moderado": 4, "critico": 5 },
+      "cuatroOMas": { "regular": 1, "moderado": 0, "critico": 3 }
     }
   },
   {
     "name": "1° EMS 2",
-    "sinBajas": 24,
-    "entre1y3": 7,
-    "cuatroOMas": 4,
+    "sinBajas": 13,
+    "entre1y3": 6,
+    "cuatroOMas": 1,
     "insuficiencias": {
       "Atronomia": 1,
       "Biologia": 2,
@@ -1585,12 +1590,17 @@ var augustEmsGroups = [
       "Literatura": 6,
       "Matemáticas": 10,
       "Quimica": 5
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 5, "moderado": 3, "critico": 5 },
+      "entre1y3":   { "regular": 1, "moderado": 1, "critico": 4 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 1 }
     }
   },
   {
     "name": "1°EMS 3",
-    "sinBajas": 29,
-    "entre1y3": 8,
+    "sinBajas": 14,
+    "entre1y3": 5,
     "cuatroOMas": 4,
     "insuficiencias": {
       "Atronomia": 1,
@@ -1610,6 +1620,11 @@ var augustEmsGroups = [
       "Literatura": 8,
       "Matemáticas": 9,
       "Quimica": 5
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 0, "moderado": 4, "critico": 10 },
+      "entre1y3":   { "regular": 0, "moderado": 1, "critico": 4 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 4 }
     }
   },
   {
