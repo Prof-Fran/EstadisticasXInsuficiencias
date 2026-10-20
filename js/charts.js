@@ -124,6 +124,7 @@ var subjectAbbreviations = {
   "Literatura": "Literatura",
   "Quimica": "Química",
   "Atronomia": "Astronomía",
+  "Astronomia": "Astronomía",
   "Deporte y Rec": "Dep. Rec.",
   "Part Juvenil": "Part. Juv.",
   "Filosofia": "Filosofía",

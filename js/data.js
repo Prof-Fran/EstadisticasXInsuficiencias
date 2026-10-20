@@ -972,9 +972,15 @@ function mergeRealGroups(simulatedData, realGroups, gradeKey) {
   var cloned = JSON.parse(JSON.stringify(simulatedData));
   if (!cloned[gradeKey]) return cloned;
   realGroups.forEach(function(realGroup) {
-    var idx = cloned[gradeKey].groups.findIndex(function(g) { return g.name === realGroup.name; });
+    var idx = cloned[gradeKey].groups.findIndex(function(g) {
+      return g.name === realGroup.name ||
+        g.name.replace(/\s+/g, '') === realGroup.name.replace(/\s+/g, '');
+    });
     if (idx !== -1) {
-      cloned[gradeKey].groups[idx] = JSON.parse(JSON.stringify(realGroup));
+      var targetName = cloned[gradeKey].groups[idx].name;
+      var newObj = JSON.parse(JSON.stringify(realGroup));
+      newObj.name = targetName;
+      cloned[gradeKey].groups[idx] = newObj;
     }
   });
   return cloned;
@@ -1724,6 +1730,401 @@ var augustEmsGroups = [
 augustEmsGroups.forEach(populateInasistencias);
 
 // =============================================================================
+// 3g. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 7° Año
+// =============================================================================
+var october7Groups = [
+  {
+    "name": "7°1",
+    "sinBajas": 21,
+    "entre1y3": 2,
+    "cuatroOMas": 2,
+    "insuficiencias": {
+      "Biologia": 2,
+      "Com Visual": 4,
+      "Ed Fisica": 0,
+      "Ed Musical": 1,
+      "Geografia": 1,
+      "Historia": 1,
+      "Id Esp": 2,
+      "Ingles": 1,
+      "Matematicas": 1,
+      "Informática": 3,
+      "Cs. Fis/Quim": 1
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 17, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 0,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 0, "critico": 2 }
+    }
+  },
+  {
+    "name": "7°2",
+    "sinBajas": 10,
+    "entre1y3": 6,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 0,
+      "Com Visual": 7,
+      "Ed Fisica": 0,
+      "Ed Musical": 3,
+      "Geografia": 7,
+      "Historia": 7,
+      "Id Esp": 7,
+      "Ingles": 5,
+      "Matematicas": 0,
+      "Informática": 7,
+      "Cs. Fis/Quim": 1
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 8, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 3, "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 5 }
+    }
+  },
+  {
+    "name": "7°3",
+    "sinBajas": 13,
+    "entre1y3": 8,
+    "cuatroOMas": 2,
+    "insuficiencias": {
+      "Biologia": 0,
+      "Com Visual": 5,
+      "Ed Fisica": 2,
+      "Ed Musical": 1,
+      "Geografia": 1,
+      "Historia": 1,
+      "Id Esp": 2,
+      "Ingles": 4,
+      "Matematicas": 2,
+      "Informática": 6,
+      "Cs. Fis/Quim": 1
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 10, "moderado": 2, "critico": 1 },
+      "entre1y3":   { "regular": 4,  "moderado": 2, "critico": 2 },
+      "cuatroOMas": { "regular": 0,  "moderado": 0, "critico": 2 }
+    }
+  },
+  {
+    "name": "7°4",
+    "sinBajas": 19,
+    "entre1y3": 3,
+    "cuatroOMas": 4,
+    "insuficiencias": {
+      "Biologia": 3,
+      "Com Visual": 6,
+      "Ed Fisica": 1,
+      "Ed Musical": 0,
+      "Geografia": 5,
+      "Historia": 5,
+      "Id Esp": 3,
+      "Ingles": 4,
+      "Matematicas": 0,
+      "Informática": 0,
+      "Cs. Fis/Quim": 0
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 15, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 1,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 3 }
+    }
+  }
+];
+october7Groups.forEach(populateInasistencias);
+
+// =============================================================================
+// 3h. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 8° Año
+// =============================================================================
+var october8Groups = [
+  {
+    "name": "8°1",
+    "sinBajas": 19,
+    "entre1y3": 0,
+    "cuatroOMas": 4,
+    "insuficiencias": {
+      "Biologia": 2,
+      "Com Visual": 1,
+      "Ed Fisica": 0,
+      "Ed Musical": 4,
+      "Ciudadana": 2,
+      "Geografia": 4,
+      "Historia": 2,
+      "Id Esp": 2,
+      "Ingles": 4,
+      "Matematicas": 3,
+      "Informática": 4,
+      "Cs. Fis/Quim": 3
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 15, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 0,  "moderado": 0, "critico": 0 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 3 }
+    }
+  },
+  {
+    "name": "8°2",
+    "sinBajas": 13,
+    "entre1y3": 4,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 3,
+      "Ed Fisica": 1,
+      "Ed Musical": 4,
+      "Ciudadana": 3,
+      "Geografia": 5,
+      "Historia": 4,
+      "Id Esp": 6,
+      "Ingles": 6,
+      "Matematicas": 6,
+      "Informática": 5,
+      "Cs. Fis/Quim": 7
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 10, "moderado": 2, "critico": 1 },
+      "entre1y3":   { "regular": 2,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 5 }
+    }
+  },
+  {
+    "name": "8°3",
+    "sinBajas": 10,
+    "entre1y3": 7,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 7,
+      "Com Visual": 5,
+      "Ed Fisica": 3,
+      "Ed Musical": 3,
+      "Ciudadana": 3,
+      "Geografia": 4,
+      "Historia": 2,
+      "Id Esp": 9,
+      "Ingles": 6,
+      "Matematicas": 7,
+      "Informática": 0,
+      "Cs. Fis/Quim": 7
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 8, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 5 }
+    }
+  },
+  {
+    "name": "8°4",
+    "sinBajas": 12,
+    "entre1y3": 4,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 8,
+      "Ed Fisica": 3,
+      "Ed Musical": 4,
+      "Ciudadana": 2,
+      "Geografia": 2,
+      "Historia": 4,
+      "Id Esp": 8,
+      "Ingles": 8,
+      "Matematicas": 6,
+      "Informática": 3,
+      "Cs. Fis/Quim": 3
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 10, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 2,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 5 }
+    }
+  }
+];
+october8Groups.forEach(populateInasistencias);
+
+// =============================================================================
+// 3i. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 9° Año
+// =============================================================================
+var october9Groups = [
+  {
+    "name": "9°1",
+    "sinBajas": 10,
+    "entre1y3": 11,
+    "cuatroOMas": 3,
+    "insuficiencias": {
+      "Biologia": 3,
+      "Com Visual": 3,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Ciudadana": 0,
+      "Fisica": 5,
+      "Geografia": 0,
+      "Historia": 0,
+      "Id Español": 1,
+      "Ingles": 2,
+      "Literatura": 12,
+      "Matemática": 3,
+      "Quimica": 1,
+      "Informatica": 5
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 8, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 6, "moderado": 3, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 2 }
+    }
+  },
+  {
+    "name": "9°2",
+    "sinBajas": 16,
+    "entre1y3": 4,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 4,
+      "Com Visual": 2,
+      "Ed Fisica": 2,
+      "Ed Musical": 3,
+      "Ciudadana": 3,
+      "Fisica": 2,
+      "Geografia": 3,
+      "Historia": 3,
+      "Id Español": 3,
+      "Ingles": 5,
+      "Literatura": 7,
+      "Matemática": 5,
+      "Quimica": 3,
+      "Informatica": 4
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 13, "moderado": 2, "critico": 1 },
+      "entre1y3":   { "regular": 2,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 4 }
+    }
+  },
+  {
+    "name": "9°3",
+    "sinBajas": 11,
+    "entre1y3": 10,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 2,
+      "Ed Fisica": 2,
+      "Ed Musical": 0,
+      "Ciudadana": 3,
+      "Fisica": 6,
+      "Geografia": 3,
+      "Historia": 3,
+      "Id Español": 3,
+      "Ingles": 1,
+      "Literatura": 9,
+      "Matemática": 8,
+      "Quimica": 5,
+      "Informatica": 4
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 9, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 5, "moderado": 3, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
+    }
+  }
+];
+october9Groups.forEach(populateInasistencias);
+
+// =============================================================================
+// 3j. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 1° EMS
+// =============================================================================
+var octoberEmsGroups = [
+  {
+    "name": "1°EMS 1",
+    "sinBajas": 17,
+    "entre1y3": 6,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Astronomia": 0,
+      "Biologia": 1,
+      "Com. Visual": 2,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 2,
+      "Filosofia": 1,
+      "Arg y debate": 0,
+      "Fisica": 3,
+      "Geografia": 0,
+      "Historia": 0,
+      "Patrimonio": 0,
+      "Ingles": 4,
+      "Literatura": 11,
+      "Matemáticas": 6,
+      "Quimica": 5
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 13, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 3,  "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 4 }
+    }
+  },
+  {
+    "name": "1° EMS 2",
+    "sinBajas": 26,
+    "entre1y3": 4,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Astronomia": 2,
+      "Biologia": 4,
+      "Com. Visual": 5,
+      "Deporte y Rec": 1,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 0,
+      "Filosofia": 4,
+      "Arg y debate": 0,
+      "Fisica": 7,
+      "Geografia": 0,
+      "Historia": 3,
+      "Patrimonio": 0,
+      "Ingles": 1,
+      "Literatura": 6,
+      "Matemáticas": 6,
+      "Quimica": 5
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 21, "moderado": 4, "critico": 1 },
+      "entre1y3":   { "regular": 2,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 4 }
+    }
+  },
+  {
+    "name": "1°EMS 3",
+    "sinBajas": 30,
+    "entre1y3": 5,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Astronomia": 1,
+      "Biologia": 3,
+      "Com. Visual": 5,
+      "Deporte y Rec": 1,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Part Juvenil": 3,
+      "Filosofia": 4,
+      "Arg y debate": 0,
+      "Fisica": 6,
+      "Geografia": 0,
+      "Historia": 2,
+      "Patrimonio": 0,
+      "Ingles": 0,
+      "Literatura": 7,
+      "Matemáticas": 7,
+      "Quimica": 5
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 24, "moderado": 5, "critico": 1 },
+      "entre1y3":   { "regular": 2,  "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 5 }
+    }
+  }
+];
+octoberEmsGroups.forEach(populateInasistencias);
+
+// =============================================================================
 // 4. Estructura de Reuniones (meetingsData) — fuente de verdad del dashboard
 // =============================================================================
 var meetingsData = {
@@ -1753,7 +2154,14 @@ var meetingsData = {
     "badge": "Reuniones Docentes - Octubre 2026",
     "subtitle": "Evaluación pre-cierre. Monitoreo y diagnóstico de alumnos en situación crítica previo a los exámenes finales.",
     "printSubtitle": "Reuniones de Evaluación Docente • Datos de Pre-Cierre de Octubre 2026",
-    "data": generateMockData(aprilData, 1.25, 0.6)
+    "data": (function() {
+      var d = generateMockData(aprilData, 1.25, 0.6);
+      d = mergeRealGroups(d, october7Groups,  "7");
+      d = mergeRealGroups(d, october8Groups,  "8");
+      d = mergeRealGroups(d, october9Groups,  "9");
+      d = mergeRealGroups(d, octoberEmsGroups, "EMS");
+      return d;
+    })()
   },
   "final": {
     "title": "4° Reunión Final",
