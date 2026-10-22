@@ -2172,6 +2172,33 @@ var october9Groups = [
     }
   },
   {
+    "name": "9°4",
+    "sinBajas": 7,
+    "entre1y3": 9,
+    "cuatroOMas": 7,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 3,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Ciudadana": 2,
+      "Fisica": 3,
+      "Geografia": 6,
+      "Historia": 3,
+      "Id Español": 6,
+      "Ingles": 1,
+      "Literatura": 11,
+      "Matemática": 6,
+      "Quimica": 2,
+      "Informatica": 4
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 5, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 5, "moderado": 2, "critico": 2 },
+      "cuatroOMas": { "regular": 1, "moderado": 2, "critico": 4 }
+    }
+  },
+  {
     "name": "9°5",
     "sinBajas": 10,
     "entre1y3": 7,
