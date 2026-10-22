@@ -1730,7 +1730,7 @@ var augustEmsGroups = [
 augustEmsGroups.forEach(populateInasistencias);
 
 // =============================================================================
-// 3g. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 7° Año
+// 3g. Datos Reales — 3° Reunión (Octubre) — 7° Año (Turno Matutino y Vespertino)
 // =============================================================================
 var october7Groups = [
   {
@@ -1828,12 +1828,84 @@ var october7Groups = [
       "entre1y3":   { "regular": 1,  "moderado": 1, "critico": 1 },
       "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 3 }
     }
+  },
+  {
+    "name": "7°5",
+    "sinBajas": 11,
+    "entre1y3": 8,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 6,
+      "Com Visual": 11,
+      "Ed Fisica": 0,
+      "Ed Musical": 4,
+      "Geografia": 4,
+      "Historia": 4,
+      "Id Esp": 4,
+      "Ingles": 7,
+      "Matematicas": 6,
+      "Informática": 8,
+      "Cs. Fis/Quim": 2
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 9, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 2, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
+    }
+  },
+  {
+    "name": "7°6",
+    "sinBajas": 12,
+    "entre1y3": 6,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 9,
+      "Ed Fisica": 0,
+      "Ed Musical": 2,
+      "Geografia": 4,
+      "Historia": 4,
+      "Id Esp": 5,
+      "Ingles": 4,
+      "Matematicas": 7,
+      "Informática": 4,
+      "Cs. Fis/Quim": 3
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 10, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 3,  "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 5 }
+    }
+  },
+  {
+    "name": "7°7",
+    "sinBajas": 17,
+    "entre1y3": 2,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 4,
+      "Ed Fisica": 4,
+      "Ed Musical": 3,
+      "Geografia": 5,
+      "Historia": 5,
+      "Id Esp": 5,
+      "Ingles": 5,
+      "Matematicas": 3,
+      "Informática": 0,
+      "Cs. Fis/Quim": 3
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 13, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 0,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 4 }
+    }
   }
 ];
 october7Groups.forEach(populateInasistencias);
 
 // =============================================================================
-// 3h. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 8° Año
+// 3h. Datos Reales — 3° Reunión (Octubre) — 8° Año (Turno Matutino y Vespertino)
 // =============================================================================
 var october8Groups = [
   {
@@ -1935,12 +2007,87 @@ var october8Groups = [
       "entre1y3":   { "regular": 2,  "moderado": 1, "critico": 1 },
       "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 5 }
     }
+  },
+  {
+    "name": "8°5",
+    "sinBajas": 6,
+    "entre1y3": 8,
+    "cuatroOMas": 7,
+    "insuficiencias": {
+      "Biologia": 8,
+      "Com Visual": 5,
+      "Ed Fisica": 5,
+      "Ed Musical": 3,
+      "Ciudadana": 3,
+      "Geografia": 3,
+      "Historia": 4,
+      "Id Esp": 7,
+      "Ingles": 8,
+      "Matematicas": 12,
+      "Informática": 2,
+      "Cs. Fis/Quim": 6
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 5, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 2, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 6 }
+    }
+  },
+  {
+    "name": "8°6",
+    "sinBajas": 7,
+    "entre1y3": 10,
+    "cuatroOMas": 1,
+    "insuficiencias": {
+      "Biologia": 4,
+      "Com Visual": 2,
+      "Ed Fisica": 0,
+      "Ed Musical": 0,
+      "Ciudadana": 0,
+      "Geografia": 0,
+      "Historia": 1,
+      "Id Esp": 1,
+      "Ingles": 0,
+      "Matematicas": 6,
+      "Informática": 0,
+      "Cs. Fis/Quim": 6
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 6, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 5, "moderado": 3, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 0, "critico": 1 }
+    }
+  },
+  {
+    "name": "8°7",
+    "sinBajas": 8,
+    "entre1y3": 4,
+    "cuatroOMas": 6,
+    "insuficiencias": {
+      "Biologia": 5,
+      "Com Visual": 10,
+      "Ed Fisica": 0,
+      "Ed Musical": 3,
+      "Ciudadana": 1,
+      "Geografia": 4,
+      "Historia": 3,
+      "Id Esp": 6,
+      "Ingles": 0,
+      "Matematicas": 9,
+      "Informática": 0,
+      "Cs. Fis/Quim": 7
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 7, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 2, "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 5 }
+    }
   }
 ];
 october8Groups.forEach(populateInasistencias);
 
 // =============================================================================
-// 3i. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 9° Año
+// 3i. Datos Reales — 3° Reunión (Octubre) — 9° Año (Turno Matutino y Vespertino)
 // =============================================================================
 var october9Groups = [
   {
@@ -2023,12 +2170,93 @@ var october9Groups = [
       "entre1y3":   { "regular": 5, "moderado": 3, "critico": 2 },
       "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
     }
+  },
+  {
+    "name": "9°5",
+    "sinBajas": 10,
+    "entre1y3": 7,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 2,
+      "Com Visual": 6,
+      "Ed Fisica": 6,
+      "Ed Musical": 1,
+      "Ciudadana": 6,
+      "Fisica": 7,
+      "Geografia": 3,
+      "Historia": 2,
+      "Id Español": 8,
+      "Ingles": 1,
+      "Literatura": 5,
+      "Matemática": 3,
+      "Quimica": 5,
+      "Informatica": 6
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 8, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
+    }
+  },
+  {
+    "name": "9°6",
+    "sinBajas": 3,
+    "entre1y3": 7,
+    "cuatroOMas": 11,
+    "insuficiencias": {
+      "Biologia": 9,
+      "Com Visual": 6,
+      "Ed Fisica": 10,
+      "Ed Musical": 8,
+      "Ciudadana": 7,
+      "Fisica": 7,
+      "Geografia": 8,
+      "Historia": 10,
+      "Id Español": 8,
+      "Ingles": 2,
+      "Literatura": 9,
+      "Matemática": 13,
+      "Quimica": 8,
+      "Informatica": 8
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 3, "moderado": 0, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 1, "moderado": 2, "critico": 8 }
+    }
+  },
+  {
+    "name": "9°7",
+    "sinBajas": 7,
+    "entre1y3": 9,
+    "cuatroOMas": 5,
+    "insuficiencias": {
+      "Biologia": 4,
+      "Com Visual": 2,
+      "Ed Fisica": 9,
+      "Ed Musical": 1,
+      "Ciudadana": 2,
+      "Fisica": 3,
+      "Geografia": 2,
+      "Historia": 3,
+      "Id Español": 6,
+      "Ingles": 0,
+      "Literatura": 3,
+      "Matemática": 8,
+      "Quimica": 6,
+      "Informatica": 2
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 6, "moderado": 1, "critico": 0 },
+      "entre1y3":   { "regular": 4, "moderado": 3, "critico": 2 },
+      "cuatroOMas": { "regular": 0, "moderado": 1, "critico": 4 }
+    }
   }
 ];
 october9Groups.forEach(populateInasistencias);
 
 // =============================================================================
-// 3j. Datos Reales — 3° Reunión (Octubre) — Turno Matutino — 1° EMS
+// 3j. Datos Reales — 3° Reunión (Octubre) — 1° EMS (Turno Matutino y Vespertino)
 // =============================================================================
 var octoberEmsGroups = [
   {
@@ -2119,6 +2347,96 @@ var octoberEmsGroups = [
       "sinBajas":   { "regular": 24, "moderado": 5, "critico": 1 },
       "entre1y3":   { "regular": 2,  "moderado": 2, "critico": 1 },
       "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 5 }
+    }
+  },
+  {
+    "name": "1°EMS 4",
+    "sinBajas": 24,
+    "entre1y3": 4,
+    "cuatroOMas": 3,
+    "insuficiencias": {
+      "Astronomia": 1,
+      "Biologia": 4,
+      "Com. Visual": 1,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 2,
+      "Ed Musical": 0,
+      "Part Juvenil": 1,
+      "Filosofia": 2,
+      "Arg y debate": 0,
+      "Fisica": 3,
+      "Geografia": 0,
+      "Historia": 2,
+      "Patrimonio": 0,
+      "Ingles": 0,
+      "Literatura": 2,
+      "Matemáticas": 6,
+      "Quimica": 4
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 19, "moderado": 4, "critico": 1 },
+      "entre1y3":   { "regular": 2,  "moderado": 1, "critico": 1 },
+      "cuatroOMas": { "regular": 0,  "moderado": 1, "critico": 2 }
+    }
+  },
+  {
+    "name": "1°EMS 5",
+    "sinBajas": 11,
+    "entre1y3": 6,
+    "cuatroOMas": 9,
+    "insuficiencias": {
+      "Astronomia": 2,
+      "Biologia": 5,
+      "Com. Visual": 2,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 6,
+      "Ed Musical": 0,
+      "Part Juvenil": 0,
+      "Filosofia": 6,
+      "Arg y debate": 0,
+      "Fisica": 8,
+      "Geografia": 0,
+      "Historia": 5,
+      "Patrimonio": 0,
+      "Ingles": 2,
+      "Literatura": 7,
+      "Matemáticas": 9,
+      "Quimica": 15
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 9, "moderado": 2, "critico": 0 },
+      "entre1y3":   { "regular": 3, "moderado": 2, "critico": 1 },
+      "cuatroOMas": { "regular": 1, "moderado": 2, "critico": 6 }
+    }
+  },
+  {
+    "name": "1°EMS 6",
+    "sinBajas": 23,
+    "entre1y3": 9,
+    "cuatroOMas": 9,
+    "insuficiencias": {
+      "Astronomia": 2,
+      "Biologia": 6,
+      "Com. Visual": 2,
+      "Deporte y Rec": 0,
+      "Ed Fisica": 8,
+      "Ed Musical": 0,
+      "Part Juvenil": 2,
+      "Filosofia": 3,
+      "Arg y debate": 0,
+      "Fisica": 8,
+      "Geografia": 0,
+      "Historia": 7,
+      "Patrimonio": 0,
+      "Ingles": 2,
+      "Literatura": 7,
+      "Matemáticas": 12,
+      "Quimica": 16
+    },
+    "distribucionInasistencias": {
+      "sinBajas":   { "regular": 19, "moderado": 3, "critico": 1 },
+      "entre1y3":   { "regular": 4,  "moderado": 3, "critico": 2 },
+      "cuatroOMas": { "regular": 1,  "moderado": 2, "critico": 6 }
     }
   }
 ];
