@@ -104,7 +104,7 @@
         </div>
       </div>
 
-      <div class="summary-card">
+      <div class="summary-card" style="display: none !important;" aria-hidden="true">
         <div class="stat-icon neon-pink">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -185,7 +185,7 @@
           <div class="focus-metrics-list" role="list">
 
             <div class="focus-metric-item selected-active" id="btn-metric-sinBajas" role="button" aria-pressed="true"
-              data-metric="sinBajas" title="Ver inasistencias de alumnos sin bajas">
+              data-metric="sinBajas" title="Alumnos sin asignaturas pendientes (Sin bajas)">
               <div class="focus-metric-label-group">
                 <span class="focus-metric-indicator indicator-success"></span>
                 <span class="focus-metric-text">Sin asignaturas pendientes (Sin bajas)</span>
@@ -194,7 +194,7 @@
             </div>
 
             <div class="focus-metric-item" id="btn-metric-entre1y3" role="button" aria-pressed="false"
-              data-metric="entre1y3" title="Ver inasistencias de alumnos con 1 a 3 bajas">
+              data-metric="entre1y3" title="Alumnos con rendimiento medio (1 a 3 bajas)">
               <div class="focus-metric-label-group">
                 <span class="focus-metric-indicator indicator-warning"></span>
                 <span class="focus-metric-text">Rendimiento medio (1 a 3 bajas)</span>
@@ -203,7 +203,7 @@
             </div>
 
             <div class="focus-metric-item" id="btn-metric-cuatroOMas" role="button" aria-pressed="false"
-              data-metric="cuatroOMas" title="Ver inasistencias de alumnos con 4 o más bajas">
+              data-metric="cuatroOMas" title="Alumnos con rendimiento crítico (4 o más bajas)">
               <div class="focus-metric-label-group">
                 <span class="focus-metric-indicator indicator-danger"></span>
                 <span class="focus-metric-text">Rendimiento crítico (4 o más bajas)</span>
@@ -214,8 +214,8 @@
           </div>
         </div>
 
-        <!-- DESGLOSE DE AUSENTISMO DINÁMICO — TODAS LAS CATEGORÍAS -->
-        <div class="absences-breakdown-box">
+        <!-- DESGLOSE DE AUSENTISMO DINÁMICO — OCULTO PARA ESTA ENTREGA (PRESERVADO EN DOM PARA JS) -->
+        <div class="absences-breakdown-box" style="display: none !important;" aria-hidden="true">
           <h4 id="absences-box-title">Niveles de Ausentismo del Grupo</h4>
 
           <!-- Fila: Sin Bajas -->
@@ -334,8 +334,8 @@
   <!-- FOOTER -->
   <footer>
     <p>Resultados de Primera Reunión &copy; Abril 2026</p>
-    <p>Generado localmente para análisis de Reuniones de Profesores. Estilo UI Premium por <a href="#">Franco Povea y
-        Antigravity</a>.</p>
+    <p>Generado localmente para análisis de Reuniones de Profesores. Estilo UI Premium por <a href="#">Franco Povea
+      </a>.</p>
   </footer>
 
   <!-- =========================================================

@@ -1035,10 +1035,10 @@ footer a:hover {
     gap: 1rem !important; 
   }
 
-  /* Resumen Global Bento en PDF (Asegurar que sea visible con alto contraste) - 4 Columnas */
+  /* Resumen Global Bento en PDF (Asegurar que sea visible con alto contraste) - Adaptable */
   .summary-section {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important; /* 4 columnas horizontales firmes */
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr)) !important; /* Columnas horizontales firmes adaptables */
     gap: 0.5rem !important;
     width: 100% !important;
   }
